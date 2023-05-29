@@ -1,8 +1,9 @@
 class Ad < ApplicationRecord
   belongs_to :user
   has_many :bookings
+  CATEGORIES = %w[Excavators Loaders Paving Machines Backhoes Bulldozers Dump Trucks Trenchers Compactors Graders Telehandlers]
 
   validates :name, presence: true
-  validates :availability, presence: true
   validates :description, presence: true
+  validates :category, inclusion: { in: CATEGORIES }
 end
