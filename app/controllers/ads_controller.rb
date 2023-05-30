@@ -3,10 +3,15 @@ class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :destroy, :edit, :update]
 
   def index
-    @ads = Ad.all
+    if params[:category_id] && search_params[:category_id].present?
+      @ads = Ad.where(category: search_params[:category_id])
+    else
+      @ads = Ad.all
+    end
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new
@@ -44,5 +49,9 @@ class AdsController < ApplicationController
 
   def ad_params
     params.require(:ad).permit(:name, :category, :description, :availability, photos: [])
+  end
+
+  def search_params
+    params.require(:category_id).permit(:category_id)
   end
 end

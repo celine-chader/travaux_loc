@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:edit, :update]
   get "/dashboard", to: "pages#dashboard"
+  # get "/dashboard", to: "bookings#edit", as: :edit_booking
+  # get "/dashboard", to: "bookings#update"
   # Defines the root path route ("/")
   # root "articles#index"
 end

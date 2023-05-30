@@ -1,12 +1,25 @@
 
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path "homepage_banner.jpg", height: 300, width: 400, crop: :fill %>')">
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path "AdobeStock_219424653-BD.jpg", height: 300, width: 400, crop: :fill %>')">
   All ads
 </div>
+
+
+  <%= simple_form_for :category_id, url: ads_path, method: :get, class: "simple_form search" do |f|%>
+    <div class="search-form-control form-group my-3">
+        <%= f.input :category_id, placeholder: "catégories", collection: Ad::CATEGORIES %>
+        <button name="button" type="submit" class="btn btn-flat mt-4">
+          <i class="fas fa-search"></i> Search
+        </button>
+    </div>
+  <% end %>
+
+
+
 
   <div class="row">
     <% @ads.each do |ad| %>
       <div class="col-12 col-sm-6 col-md-4 my-3">
-        <%= link_to root_path(:id), style:"text-decoration: none" do %>
+        <%= link_to ad_path(ad), style:"text-decoration: none" do %>
           <div class="card-product">
             <%= cl_image_tag ad.photos.first.key, height: 300, width: 400, crop: :fill %>
             <div class="card-product-infos">
