@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 require "faker"
+require "open-uri"
 
 puts "starting seeding"
 
@@ -15,11 +16,13 @@ puts "starting seeding"
     )
   user.save!
   3.times do
+    file = URI.open(Faker::LoremFlickr.image(size: "400x400"))
     ad = Ad.new(
       name: Faker::Construction.heavy_equipment,
       category: Ad::CATEGORIES.sample,
-      description: Faker::Lorem.paragraph(sentence_count: 4)
+      description: Faker::Lorem.paragraph(sentence_count: 4),
     )
+    ad.photo.attach(io: file, filename: "#{ad.name}.png", content_type: "image/png")
     ad.user = user
     ad.save!
   end
