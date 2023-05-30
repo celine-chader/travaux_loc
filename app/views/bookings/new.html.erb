@@ -1,9 +1,9 @@
 
 
-  <% if false %>
+<div hidden>
     <div class="row justify-content-center mb-5">
       <h1 class ="text-center m-3">Nouvelle réservation</h1>
-      <%= f.input :opening_date,
+      <%#= f.input :start_date,
               as: :string,
               input_html: { data: { controller: "datepicker" } } %>
     </div>
@@ -11,7 +11,8 @@
     <div>
     <%= link_to "Back to ads", ads_path, class:"btn btn-primary m-3" %>
     </div>
-  <% end %>
+</div>
+
 
 <div>
   <%= simple_form_for [@ad, @booking],
@@ -20,20 +21,15 @@
                           controller: 'datepicker'
                         }
                       } do |f| %>
-    // Target each input with the stimulus controller:
-    // <input ...data-datepicker-target="startDateInput"...>
+        <%#= f.input :start_date,
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
     <%= f.input :start_date,
-                // Note that we have to turn our inputs to string inputs
-                // so that flatpickr can correctly use them
                 as: :string,
                 input_html: {
                   data: {
-                    datepicker_target: 'startDateInput',
+                    datepicker_target: 'startDateInput'
   } } %>
-    // <input ...data-datepicker-target="endDateInput"...>
-    // On peut se permettre de cacher celui-ci avec la classe bootstrap d-none
-    // car le premier input ouvre un calendrier qui autorise le choix
-    // de la date de début et de fin
     <%= f.input :end_date,
                 as: :string,
                 input_html: {

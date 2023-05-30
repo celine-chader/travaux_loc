@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :new]
   def new
     @booking = Booking.new
+    @ad = Ad.find(params[:ad_id])
   end
 
   def create
