@@ -1,34 +1,58 @@
 <div class="container">
 
   <div class="d-flex p-2">
-  <div class="col-2">
-    <%= current_user.first_name %>
-    <%= current_user.last_name %>
+    <div class="col col-3">
+      <div class="panel space-2 m-2">
+        <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/C%C3%A9line_Dion_en_2013_%28cropped%29.JPG/1024px-C%C3%A9line_Dion_en_2013_(cropped).JPG", class: "rounded mx-auto d-block", style: "height: 150px" %>
+        <br>
+        <div class="panel-body">
+          <strong><div class="text-center text-wrap fs-5 mb-2"><%= current_user.first_name %></div></strong>
+          <div class="text-center text-wrap fs-8"><i class="fa-regular fa-envelope"></i><%= current_user.email %></div>
+        </div>
 
-  </div>
-    <div class="col-5">
-      <h2 class="text-center">My ads</h2>
-      <br>
-      <div >
-        <% @ads.each do |ad| %>
-          <div class="card-product">
-              <% ad.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-              <% end %>
+        <br>
+        <h5 class="text-center text-wrap fs-5 mb-2"><strong>My posted ads</strong></h5>
+        <div >
+          <% @ads.each do |ad| %>
+            <div class="panel-body mt-2">
+              <div class="card">
+                <% ad.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, crop: :fill %>
+                  <% end %>
 
-            <div class="card-product-infos">
-              <h2> <%= ad.name %> </h2>
-              <p> <%= ad.category %> </p>
-              <p><%= ad.description %> <strong>relevant info</strong> only.</p>
+                <div class="card-body">
+                  <h5 class="card-title"><%= ad.name %></h5>
+                  <p class="card-text"><%= ad.category %>.</p>
+                </div>
+              </div>
             </div>
-          </div>
-
-         <br>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
 
-    <ol class="col-5">
+    <div class="col-5 m-2">
+      <h2 class="text-center">Pending requests</h2>
+      <br>
+        <div>
+          <% @pending_requests.each do |ad| %>
+            <div class="panel-body mt-2">
+              <div class="card">
+                <% ad.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, crop: :fill %>
+                  <% end %>
+
+                <div class="card-body">
+                  <h5 class="card-title"><%= ad.name %></h5>
+                  <p class="card-text"><%= ad.category %>.</p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+
+    <div class="col-5 m-2">
       <h2 class="text-center">My bookings</h2>
       <br>
       <div>
@@ -48,7 +72,7 @@
           <hr>
         <% end %>
       </div>
-    </ol>
+    </div>
   </div>
 
 </div>
