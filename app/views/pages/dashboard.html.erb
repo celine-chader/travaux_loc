@@ -1,68 +1,78 @@
-
 <div class="container">
 
-
   <div class="d-flex p-2">
-  <div class="col-2">
-    <%= current_user.first_name %>
-    <%= current_user.last_name %>
+    <div class="col col-3">
+      <div class="panel space-2 m-2">
+        <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/C%C3%A9line_Dion_en_2013_%28cropped%29.JPG/1024px-C%C3%A9line_Dion_en_2013_(cropped).JPG", class: "rounded mx-auto d-block", style: "height: 150px" %>
+        <br>
+        <div class="panel-body">
+          <strong><div class="text-center text-wrap fs-5 mb-2"><%= current_user.first_name %></div></strong>
+          <div class="text-center text-wrap fs-8"><i class="fa-regular fa-envelope"></i><%= current_user.email %></div>
+        </div>
 
-  </div>
-    <ol class="col-5">
-      <h2 class="text-center">My ads</h2>
-      <br>
-      <div>
-        <% @ads.each do |ad| %>
-          <li>
-            <ul>
-              <h5><strong><%= ad.name %></strong></h5>
-              <li><% ad.photos.each do |photo| %>
-                  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <br>
+        <h5 class="text-center text-wrap fs-5 mb-2"><strong>My posted ads</strong></h5>
+        <div >
+          <% @ads.each do |ad| %>
+            <div class="panel-body mt-2">
+              <div class="card">
+                <% ad.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, crop: :fill %>
                   <% end %>
-              </li>
-              <li>Category: <%= ad.category %></li>
-              <li>Description: <%= ad.description %></li>
-              <li>Availability: <%= ad.availability %></li>
-              <li>Created at: <%= ad.created_at %></li>
-              <li>Updated at: <%= ad.updated_at %></li>
-            </ul>
-          </li>
-          <hr>
-        <% end %>
-      </div>
-    </ol>
 
-    <ol class="col-5">
+                <div class="card-body">
+                  <h5 class="card-title"><%= ad.name %></h5>
+                  <p class="card-text"><%= ad.category %>.</p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-5 m-2">
+      <h2 class="text-center">Pending requests</h2>
+      <br>
+        <div>
+          <% @pending_requests.each do |ad| %>
+            <div class="panel-body mt-2">
+              <div class="card">
+                <% ad.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, crop: :fill %>
+                  <% end %>
+
+                <div class="card-body">
+                  <h5 class="card-title"><%= ad.name %></h5>
+                  <p class="card-text"><%= ad.category %>.</p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+
+    <div class="col-5 m-2">
       <h2 class="text-center">My bookings</h2>
       <br>
       <div>
         <% @bookings.each do |booking| %>
-          <li>
-            <ul>
-              <h5><strong>Ad reference: #<%= booking.ad_id %></strong></h5>
-              <li>Status: <% if booking.status %>
-                  <%= "Confirmed" %>
-                  <% else %>
-                  <%= "Pending" %>
-                <% end %></li>
-              <li>Availability: <%= booking.availability %></li>
-              <li>Created at: <%= booking.created_at %></li>
-              <li>Updated at: <%= booking.updated_at %></li>
-            </ul>
-          </li>
+          <div class="card-product">
+
+            <div class="card-product-infos">
+              <h2>Ad reference: #<%= booking.ad_id %></h5>
+              <p>Status: <% if booking.status %>
+                <%= "Confirmed" %>
+                <% else %>
+                <%= "Pending" %>
+                <% end %>
+              </p>
+            </div>
+          </div>
           <hr>
         <% end %>
       </div>
-    </ol>
+    </div>
   </div>
 
 </div>
-
-    <%# t.date "availability"
-    t.boolean "status", default: false
-    t.bigint "user_id", null: false
-    t.bigint "ad_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ad_id"], name: "index_bookings_on_ad_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id" %>

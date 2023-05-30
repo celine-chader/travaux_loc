@@ -16,11 +16,14 @@ Ad.destroy_all
 puts "destroying all users"
 User.destroy_all
 
-puts "destroying all users"
-User.destroy_all
+puts "destroying all bookings"
+Booking.destroy_all
 
 puts "destroying all ads"
 Ad.destroy_all
+
+puts "destroying all users"
+User.destroy_all
 
 puts "starting seeding"
 
