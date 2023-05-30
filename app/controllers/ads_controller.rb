@@ -15,6 +15,7 @@ class AdsController < ApplicationController
 
   def create
     @ad = Ad.new(ad_params)
+    @ad.user = current_user
     if @ad.save
       redirect_to ad_path(@ad)
     else
@@ -42,6 +43,6 @@ class AdsController < ApplicationController
   end
 
   def ad_params
-    params.require(:ad).permit(:name, :category, :description, :availability, :photo)
+    params.require(:ad).permit(:name, :category, :description, :availability, photos: [])
   end
 end
