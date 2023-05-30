@@ -19,7 +19,7 @@
   <div class="row">
     <% @ads.each do |ad| %>
       <div class="col-12 col-sm-6 col-md-4 my-3">
-        <%= link_to root_path(:id), style:"text-decoration: none" do %>
+        <%= link_to ad_path(ad), style:"text-decoration: none" do %>
           <div class="card-product">
             <%= cl_image_tag ad.photos.first.key, height: 300, width: 400, crop: :fill %>
             <div class="card-product-infos">
