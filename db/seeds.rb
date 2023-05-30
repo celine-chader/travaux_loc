@@ -8,6 +8,12 @@
 require "faker"
 require "open-uri"
 
+puts "destroying all users"
+User.destroy_all
+
+puts "destroying all ads"
+Ad.destroy_all
+
 puts "starting seeding"
 
 15.times do

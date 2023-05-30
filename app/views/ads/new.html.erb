@@ -4,7 +4,7 @@
   <%= f.input :name %>
   <%= f.input :category, collection: Ad::CATEGORIES %>
   <%= f.input :description %>
-  <%= f.input :photo, as: :file %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.input :availability, as: :date %>
   <%= f.button :submit, "Créer", class:"btn btn-outline-primary" %>
 <% end %>
