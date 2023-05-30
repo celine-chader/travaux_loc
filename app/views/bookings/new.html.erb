@@ -1,0 +1,46 @@
+
+
+<div hidden>
+    <div class="row justify-content-center mb-5">
+      <h1 class ="text-center m-3">Nouvelle réservation</h1>
+      <%#= f.input :start_date,
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
+    </div>
+
+    <div>
+    <%= link_to "Back to ads", ads_path, class:"btn btn-primary m-3" %>
+    </div>
+</div>
+
+
+<div>
+  <%= simple_form_for [@ad, @booking],
+                      html: {
+                        data: {
+                          controller: 'datepicker'
+                        }
+                      } do |f| %>
+        <%#= f.input :start_date,
+              as: :string,
+              input_html: { data: { controller: "datepicker" } } %>
+    <%= f.input :start_date,
+                as: :string,
+                input_html: {
+                  data: {
+                    datepicker_target: 'startDateInput'
+  } } %>
+    <%= f.input :end_date,
+                as: :string,
+                input_html: {
+                  data: {
+                    datepicker_target: 'endDateInput'
+                  }
+  } %>
+    <%= f.submit 'Book now!', class: 'btn btn-primary' %>
+<% end %>
+
+  </div>
+
+<% if false %>
+<% end %>
