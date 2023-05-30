@@ -7,6 +7,14 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require "faker"
 require "open-uri"
+puts "destroying all bookings"
+Booking.destroy_all
+
+puts "destroying all ads"
+Ad.destroy_all
+
+puts "destroying all users"
+User.destroy_all
 
 puts "destroying all users"
 User.destroy_all
@@ -28,7 +36,7 @@ puts "starting seeding"
       category: Ad::CATEGORIES.sample,
       description: Faker::Lorem.paragraph(sentence_count: 4),
     )
-    ad.photo.attach(io: file, filename: "#{ad.name}.png", content_type: "image/png")
+    ad.photos.attach(io: file, filename: "#{ad.name}.png", content_type: "image/png")
     ad.user = user
     ad.save!
   end
