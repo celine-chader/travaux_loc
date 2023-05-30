@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require "faker"
 
+
 puts "starting seeding"
 
 15.times do
