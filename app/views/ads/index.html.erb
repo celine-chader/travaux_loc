@@ -3,14 +3,19 @@
   All ads
 </div>
 
-<form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
-  <div class="search-form-control form-group my-3">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-    <button name="button" type="submit" class="btn btn-flat">
-      <i class="fas fa-search"></i> Search
-    </button>
-  </div>
-</form>
+
+  <%= simple_form_for :category_id, url: ads_path, method: :get, class: "simple_form search" do |f|%>
+    <div class="search-form-control form-group my-3">
+        <%= f.input :category_id, placeholder: "catégories", collection: Ad::CATEGORIES %>
+        <button name="button" type="submit" class="btn btn-flat mt-4">
+          <i class="fas fa-search"></i> Search
+        </button>
+    </div>
+  <% end %>
+
+
+
+
   <div class="row">
     <% @ads.each do |ad| %>
       <div class="col-12 col-sm-6 col-md-4 my-3">
