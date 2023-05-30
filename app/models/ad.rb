@@ -1,5 +1,5 @@
 class Ad < ApplicationRecord
-  has_many_attached :photo
+  has_many_attached :photos
   belongs_to :user
   has_many :bookings
   CATEGORIES = %w[Excavators Loaders Paving Machines Backhoes Bulldozers Dump Trucks Trenchers Compactors Graders Telehandlers]
@@ -7,5 +7,5 @@ class Ad < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :category, inclusion: { in: CATEGORIES }
-  
+
 end
