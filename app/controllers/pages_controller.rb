@@ -7,4 +7,5 @@ class PagesController < ApplicationController
     @ads = current_user.ads
     @bookings = current_user.bookings
   end
+
 end

@@ -6,7 +6,7 @@
   <div class="col-2">
     <%= current_user.first_name %>
     <%= current_user.last_name %>
-    
+
   </div>
     <ol class="col-5">
       <h2 class="text-center">My ads</h2>
@@ -16,6 +16,10 @@
           <li>
             <ul>
               <h5><strong><%= ad.name %></strong></h5>
+              <li><% ad.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+                  <% end %>
+              </li>
               <li>Category: <%= ad.category %></li>
               <li>Description: <%= ad.description %></li>
               <li>Availability: <%= ad.availability %></li>
