@@ -15,6 +15,7 @@ class AdsController < ApplicationController
 
   def create
     @ad = Ad.new(ad_params)
+    @ad.user = current_user
     if @ad.save
       redirect_to ad_path(@ad)
     else
