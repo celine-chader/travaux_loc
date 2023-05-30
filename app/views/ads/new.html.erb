@@ -1,0 +1,10 @@
+<h2>Créer une annonce</h2>
+
+<%= simple_form_for(@ad) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :category, collection: Ad::CATEGORIES %>
+  <%= f.input :description %>
+  <%= f.input :description %>
+  <%= f.input :availability, as: :date %>
+  <%= f.button :submit, "Créer", class:"btn btn-outline-primary" %>
+<% end %>

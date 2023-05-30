@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new]
   before_action :set_ad, only: [:show, :destroy, :edit, :update]
 
   def index
