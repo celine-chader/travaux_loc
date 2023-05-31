@@ -34,10 +34,10 @@ puts "starting seeding"
     ad.photos.attach(io: file, filename: "#{ad.name}.png", content_type: "image/png")
     ad.user = user
     ad.save!
-    5.times do
+    2.times do
       booking = Booking.new(
         start_date: ["2023-06-12", "2023-06-04", "2023-06-02", "2023-06-08", "2023-06-07", "2023-06-11"].sample,
-        end_date: ["2023-06-13", "2023-06-16", "2023-07-01", "2023-06-20", "2023-06-15", "2023-07-03"].sample,°
+        end_date: ["2023-06-13", "2023-06-16", "2023-07-01", "2023-06-20", "2023-06-15", "2023-07-03"].sample,
       )
       booking.ad = Ad.all.sample
       booking.user = User.all.sample

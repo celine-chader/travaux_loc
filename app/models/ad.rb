@@ -6,6 +6,6 @@ class Ad < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
+  validates :address, presence:true
   validates :category, inclusion: { in: CATEGORIES }
-
 end

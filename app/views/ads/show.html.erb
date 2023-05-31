@@ -1,18 +1,13 @@
-
-
-
-
-
-
 <div class="container">
   <div class="card-body">
     <h2><%= @ad.name %></h2>
-    <%= image_tag("homepage_banner.jpg", class:"rounded",
-        width: 300, height: 300, crop: :fill) %>
+    <% @ad.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, class:"rounded", width: 300, height: 300, crop: :fill %>
+    <% end %>
     <div class="m-2">
-    <p><strong>Category : </strong> <%= @ad.category %></p>
-    <p><strong>Description</strong></p>
-    <p class="card-text mx-auto"><%= @ad.description %></p>
+      <p><strong>Category : </strong> <%= @ad.category %></p>
+      <p><strong>Description</strong></p>
+      <p class="card-text mx-auto"><%= @ad.description %></p>
     </div>
   </div>
 </div>
@@ -20,5 +15,5 @@
 <%= render 'bookings/form' %>
 <br>
 <div>
-<%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>
+  <%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>
 </div>

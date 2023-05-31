@@ -65,6 +65,7 @@
 
               <div class="card-product-infos">
                 <h2>Ad reference: #<%= booking.ad_id %></h5>
+                <p><%= booking.ad.name %></p>
                 <p>Status: <% if booking.status %>
                   <%= "Confirmed" %>
                   <% elsif booking.status == nil %>
@@ -74,7 +75,6 @@
                   <% end %>
                 </p>
                 <p><%= booking.ad.description %></p>
-                <p><%= booking.ad.name %></p>
               </div>
             </div>
           <% end %>
