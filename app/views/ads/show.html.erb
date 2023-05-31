@@ -9,17 +9,16 @@
     <h2><%= @ad.name %></h2>
     <%= image_tag("homepage_banner.jpg", class:"rounded",
         width: 300, height: 300, crop: :fill) %>
-    <p>
-    <strong>Category</strong>
-    <%= @ad.category %>
-    </p>
-    <strong>Description</strong>
-     <hr>
+    <div class="m-2">
+    <p><strong>Category : </strong> <%= @ad.category %></p>
+    <p><strong>Description</strong></p>
     <p class="card-text mx-auto"><%= @ad.description %></p>
+    </div>
   </div>
-<div>
-<%= link_to "Back to Ads", ads_path, class:"btn btn-secondary" %>
 </div>
 <hr>
 <%= render 'bookings/form' %>
+<br>
+<div>
+<%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>
 </div>

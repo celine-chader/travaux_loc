@@ -1,10 +1,15 @@
 <h2>Créer une annonce</h2>
-
-<%= simple_form_for(@ad) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :category, collection: Ad::CATEGORIES %>
-  <%= f.input :description %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.input :availability, as: :date %>
-  <%= f.button :submit, "Créer", class:"btn btn-outline-primary" %>
-<% end %>
+<div>
+  <%= simple_form_for(@ad) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :category, collection: Ad::CATEGORIES %>
+    <%= f.input :description %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.input :availability, as: :date %>
+    <%= f.button :submit, "Create", class:"btn btn-dark" %>
+  <% end %>
+</div>
+<br>
+<div>
+<%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>
+</div>
