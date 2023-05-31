@@ -1,38 +1,42 @@
-<div class="container">
+<div class="container-xl">
+
+  <div class="d-flex">
+    <div>
+      <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/C%C3%A9line_Dion_en_2013_%28cropped%29.JPG/1024px-C%C3%A9line_Dion_en_2013_(cropped).JPG", class: "avatar-large" %>
+    </div>
+    <br>
+    <div>
+      <strong><div class="text-start text-wrap fs-5 m-2"><%= current_user.first_name %></div></strong>
+      <div class="text-start text-wrap fs-8 m-2"><i class="fa-regular fa-envelope"></i><%= current_user.email %></div>
+    </div>
+  </div>
 
   <div class="d-flex p-2">
     <div class="col col-3">
-      <div class="panel space-2 m-2">
-        <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/C%C3%A9line_Dion_en_2013_%28cropped%29.JPG/1024px-C%C3%A9line_Dion_en_2013_(cropped).JPG", class: "rounded mx-auto d-block", style: "height: 150px" %>
-        <br>
-        <div class="panel-body">
-          <strong><div class="text-center text-wrap fs-5 mb-2"><%= current_user.first_name %></div></strong>
-          <div class="text-center text-wrap fs-8"><i class="fa-regular fa-envelope"></i><%= current_user.email %></div>
-        </div>
 
-        <br>
-        <h5 class="text-center text-wrap fs-5 m-3"><strong>My posted ads</strong></h5>
-        <div>
-          <% @ads.each do |ad| %>
-            <div class="card my-2">
-              <% ad.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, crop: :fill %>
-                <% end %>
-
-              <%= link_to ad_path(ad), style:"text-decoration: none" do %>
-                <div class="card p-2">
-                  <h5><strong>Ad reference #<%= ad.id %>: <%= ad.name %></strong></h5>
-                    <p class="card-text">Booking offers: <%= ad.bookings.count %>
-                    <p class="card-text">Category: <%= ad.category %>.</p>
-                </div>
+      <br>
+      <h5 class="text-center text-wrap fs-5 my-3"><strong>My posted ads</strong></h5>
+      <div>
+        <% @ads.each do |ad| %>
+          <div class="card my-2">
+            <% ad.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, crop: :fill %>
               <% end %>
-            </div>
-          <% end %>
-        </div>
+
+            <%= link_to ad_path(ad), style:"text-decoration: none" do %>
+              <div class="card p-2">
+                <h5><strong>Ad reference #<%= ad.id %>: <%= ad.name %></strong></h5>
+                  <p class="card-text">Booking offers: <%= ad.bookings.count %>
+                  <p class="card-text">Category: <%= ad.category %>.</p>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
+
     </div>
 
-    <div class="col-5 m-2">
+    <div class="col-5 my-2">
       <h2 class="text-center">Pending approvals</h2>
       <br>
         <div>
@@ -63,7 +67,7 @@
         </div>
     </div>
 
-    <div class="col-5 m-2">
+    <div class="col-5 my-2">
       <h2 class="text-center ">My booking requests</h2>
       <br>
         <div>
