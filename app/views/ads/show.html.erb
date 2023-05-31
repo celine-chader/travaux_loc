@@ -1,24 +1,23 @@
 
 
-
-
-
-
-<div class="container">
+<div class="container_show">
   <div class="card-body">
-    <h2><%= @ad.name %></h2>
-    <%= image_tag("homepage_banner.jpg", class:"rounded",
-        width: 300, height: 300, crop: :fill) %>
-    <div class="m-2">
-    <p><strong>Category : </strong> <%= @ad.category %></p>
-    <p><strong>Description</strong></p>
-    <p class="card-text mx-auto"><%= @ad.description %></p>
+    <div class="show_title"><%= @ad.name %></div>
+    <div class="d-flex">
+      <%= (cl_image_tag @ad.photos.first.key, class:"photo-ad") %>
+      <div class="m-2">
+      <p><strong>Category : </strong> <%= @ad.category %></p>
+      <p><strong>Description : </strong> <%= @ad.description %></p>
+      <p><strong>Address : </strong><%= @ad.address %></p>
+      <p><strong>Price per day :</strong><%= @ad.price %> €</p>
+      </div>
     </div>
   </div>
-</div>
-<hr>
-<%= render 'bookings/form' %>
-<br>
-<div>
-<%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>
+  <br>
+  <p><strong>Book it !</strong></p>
+  <%= render 'bookings/form' %>
+  <br>
+  <div>
+  <%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>
+  </div>
 </div>

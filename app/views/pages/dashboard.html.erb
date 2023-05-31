@@ -43,6 +43,7 @@
                 <div class="card-body">
                   <h5 class="card-title"><%= booking.ad.name %></h5>
                   <p class="card-text"><%= booking.ad.category %>.</p>
+
                   <%= button_to "Accept", accept_path(booking) %>
                   <%= button_to "Decline", decline_path(booking) %>
                 </div>
