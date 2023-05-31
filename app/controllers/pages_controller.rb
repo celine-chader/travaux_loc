@@ -5,7 +5,8 @@ class PagesController < ApplicationController
 
   def dashboard
     @ads = current_user.ads
-    @pending_requests = Booking.where(status: false, user_id: current_user)
+    requests = Booking.select { |booking| booking.ad.user == current_user }
+    @pending_requests = requests.select { |request| request.status == nil }
     @bookings = current_user.bookings
   end
 

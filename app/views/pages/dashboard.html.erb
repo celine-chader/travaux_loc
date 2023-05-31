@@ -11,7 +11,7 @@
         </div>
 
         <br>
-        <h5 class="text-center text-wrap fs-5 mb-2"><strong>My posted ads</strong></h5>
+        <h5 class="text-center text-wrap fs-5 m-3"><strong>My posted ads</strong></h5>
         <div >
           <% @ads.each do |ad| %>
             <div class="panel-body mt-2">
@@ -32,20 +32,18 @@
     </div>
 
     <div class="col-5 m-2">
-      <h2 class="text-center">Pending requests</h2>
+      <h2 class="text-center">Pending approvals</h2>
       <br>
         <div>
-          <% @pending_requests.each do |ad| %>
-            <div class="panel-body mt-2">
-              <div class="card">
-                <% ad.photos.each do |photo| %>
-                  <%= cl_image_tag photo.key, crop: :fill %>
-                  <% end %>
+          <% @pending_requests.each do |booking| %>
+            <div class="card-product">
+              <% booking.ad.photos.each do |photo| %>
+                <%= cl_image_tag photo.key, crop: :fill %>
+                <% end %>
 
-                <div class="card-body">
-                  <h5 class="card-title"><%= ad.name %></h5>
-                  <p class="card-text"><%= ad.category %>.</p>
-                </div>
+              <div class="card-product-infos">
+                <h2><%= booking.ad.name %></h2>
+                <p><%= booking.ad.category %>.</p>
               </div>
             </div>
           <% end %>
@@ -53,25 +51,31 @@
     </div>
 
     <div class="col-5 m-2">
-      <h2 class="text-center">My bookings</h2>
+      <h2 class="text-center">My booking requests</h2>
       <br>
-      <div>
-        <% @bookings.each do |booking| %>
-          <div class="card-product">
-
-            <div class="card-product-infos">
-              <h2>Ad reference: #<%= booking.ad_id %></h5>
-              <p>Status: <% if booking.status %>
-                <%= "Confirmed" %>
-                <% else %>
-                <%= "Pending" %>
+        <div>
+          <% @bookings.each do |booking| %>
+            <div class="card-product">
+             <% booking.ad.photos.each do |photo| %>
+                <%= cl_image_tag photo.key, crop: :fill %>
                 <% end %>
-              </p>
+
+              <div class="card-product-infos">
+                <h2>Ad reference: #<%= booking.ad_id %></h5>
+                <p>Status: <% if booking.status %>
+                  <%= "Confirmed" %>
+                  <% elsif booking.status == nil %>
+                  <%= "Pending" %>
+                  <% else %>
+                  <%= "Refused" %>
+                  <% end %>
+                </p>
+                <p><%= booking.ad.description %></p>
+                <p><%= booking.ad.name %></p>
+              </div>
             </div>
-          </div>
-          <hr>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
     </div>
   </div>
 
