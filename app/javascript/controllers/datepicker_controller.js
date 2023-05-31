@@ -1,16 +1,16 @@
 import { Controller } from "@hotwired/stimulus";
 import flatpickr from "flatpickr";
+import rangePlugin from "flatpickrRangePlugin";
 
 // Connects to data-controller="datepicker"
 export default class extends Controller {
-  static targets = [ 'startDateInput', 'endDateInput' ]
-
+  static targets = [ "startTime", "endTime" ]
   connect() {
-    flatpickr(this.startDateInputTarget, {
-      mode: 'single',
-    })
-    flatpickr(this.endDateInputTarget, {
-      mode: 'single',
-    })
+    flatpickr(this.startTimeTarget, {
+              enableTime: true,
+              mode: "range",
+              inline: true,
+              // Provide an id for the plugin to work
+              plugins: [new rangePlugin({ input: this.endTimeTarget})]})
   }
 }
