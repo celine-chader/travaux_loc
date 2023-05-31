@@ -1,7 +1,13 @@
-<div class="card-body">
-  <h2><%= @ad.name %></h2>
-  <div class="d-flex">
-    <%= image_tag("AdobeStock_219424653-BD", class:"rounded",
+
+
+
+
+
+
+<div class="container">
+  <div class="card-body">
+    <h2><%= @ad.name %></h2>
+    <%= image_tag("homepage_banner.jpg", class:"rounded",
         width: 300, height: 300, crop: :fill) %>
     <div class="m-2">
     <p><strong>Category : </strong> <%= @ad.category %></p>
