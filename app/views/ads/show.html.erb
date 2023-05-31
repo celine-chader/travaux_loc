@@ -1,25 +1,19 @@
-
-
-
-
-
-
-<div class="container">
-  <div class="card-body">
-    <h2><%= @ad.name %></h2>
-    <%= image_tag("homepage_banner", class:"rounded",
-        width: 300, height: 300, crop: :fill) %>
-    <p>
-    <strong>Category</strong>
-    <%= @ad.category %>
-    </p>
-    <strong>Description</strong>
-     <hr>
-    <p class="card-text mx-auto"><%= @ad.description %></p>
-  </div>
-<div>
-<%= link_to "Back to Ads", ads_path, class:"btn btn-secondary" %>
+<div class="card-body">
+  <h2><%= @ad.name %></h2>
+  <%= image_tag("homepage_banner", class:"rounded",
+      width: 300, height: 300, crop: :fill) %>
+  <p>
+  <strong>Category</strong>
+  <%= @ad.category %>
+  </p>
+  <strong>Description</strong>
+    <hr>
+  <p class="card-text mx-auto"><%= @ad.description %></p>
 </div>
 <hr>
 <%= render 'bookings/form' %>
+</div>
+<br>
+<div>
+<%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>
 </div>
