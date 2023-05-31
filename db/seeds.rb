@@ -30,7 +30,8 @@ puts "starting seeding"
       name: Faker::Construction.heavy_equipment,
       category: Ad::CATEGORIES.sample,
       description: Faker::Lorem.paragraph(sentence_count: 4),
-      address: Faker::Address.full_address
+      address: Faker::Address.full_address,
+      price: (10..1000).to_a.sample
     )
     ad.photos.attach(io: file, filename: "#{ad.name}.png", content_type: "image/png")
     ad.user = user

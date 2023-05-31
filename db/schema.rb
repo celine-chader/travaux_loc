@@ -54,7 +54,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_122138) do
     t.integer "price"
     t.float "latitude"
     t.float "longitude"
-    t.string "address"
     t.index ["user_id"], name: "index_ads_on_user_id"
   end
 
