@@ -1,27 +1,7 @@
 <div>
-  <%= simple_form_for [@ad, @booking],
-                      html: {
-                        data: {
-                          controller: 'datepicker'
-                        }
-                      } do |f| %>
-        <%#= f.input :start_date,
-              as: :string,
-              input_html: { data: { controller: "datepicker" } } %>
-    <%= f.input :start_date,
-                as: :string,
-                input_html: {
-                  data: {
-                    datepicker_target: 'startDateInput'
-  } } %>
-    <%= f.input :end_date,
-                as: :string,
-                input_html: {
-                  data: {
-                    datepicker_target: 'endDateInput'
-                  }
-  } %>
-    <%= f.submit 'Book now!', class: 'btn btn-primary' %>
+<%= simple_form_for [@ad, @booking], data: { controller: 'datepicker' } do |f| %>
+    <%= f.input :start_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "startTime" } } %>
+  <%= f.input :end_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "endTime" } } %>
+  <%= f.submit 'Schedule your appointment' %>
 <% end %>
-
-  </div>
+</div>
