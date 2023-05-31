@@ -1,10 +1,10 @@
-
-
 <div class="container_show">
   <div class="card-body">
     <div class="show_title"><%= @ad.name %></div>
     <div class="d-flex">
-      <%= (cl_image_tag @ad.photos.first.key, class:"photo-ad") %>
+      <% @ad.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, class:"photo-ad" %>
+      <% end %>
       <div class="m-2">
       <p><strong>Category : </strong> <%= @ad.category %></p>
       <p><strong>Description : </strong> <%= @ad.description %></p>
@@ -15,7 +15,7 @@
   </div>
   <br>
   <p><strong>Book it !</strong></p>
-  <%= render 'bookings/form' %>
+  <%= render 'shared/form' %>
   <br>
   <div>
   <%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>
