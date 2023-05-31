@@ -21,7 +21,7 @@ puts "starting seeding"
 
 15.times do
   user = User.new(
-    email: Faker::Internet.email, password: "123456", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.full_address
+    email: Faker::Internet.email, password: "123456" ,first_name: Faker::Name.first_name, last_name: Faker::Name.last_name
     )
   user.save!
   3.times do
@@ -30,11 +30,13 @@ puts "starting seeding"
       name: Faker::Construction.heavy_equipment,
       category: Ad::CATEGORIES.sample,
       description: Faker::Lorem.paragraph(sentence_count: 4),
+      address: Faker::Address.full_address,
+      price: (10..1000).to_a.sample
     )
     ad.photos.attach(io: file, filename: "#{ad.name}.png", content_type: "image/png")
     ad.user = user
     ad.save!
-    5.times do
+    2.times do
       booking = Booking.new(
         start_date: ["2023-06-12", "2023-06-04", "2023-06-02", "2023-06-08", "2023-06-07", "2023-06-11"].sample,
         end_date: ["2023-06-13", "2023-06-16", "2023-07-01", "2023-06-20", "2023-06-15", "2023-07-03"].sample,
