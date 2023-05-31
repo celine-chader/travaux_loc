@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to ads_path, class: "navbar-brand" do %>
-      <%= image_tag "logo-travaux.png" %>
+      <%= image_tag "logo-ok.png" %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,10 +12,10 @@
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "All ads", "/ads", class: "nav-link" %>
+            <%= link_to "All ads", "/ads", class: "nav-link category me-3" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "Create an ad", "/ads/new", class: "nav-link" %>
+            <%= link_to "Create an ad", "/ads/new", class: "nav-link category me-4" %>
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
