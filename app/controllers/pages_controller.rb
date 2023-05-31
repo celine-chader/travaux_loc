@@ -5,6 +5,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @ads = current_user.ads
+    @pending_bookings = []
     @bookings = current_user.bookings
   end
 

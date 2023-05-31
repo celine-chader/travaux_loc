@@ -1,61 +1,84 @@
-<div class="container">
+<div class="d-flex">
+  <div class="dashboard-user-bar flex-fill">
+    <div class="text-center ms-3">
+      <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/C%C3%A9line_Dion_en_2013_%28cropped%29.JPG/1024px-C%C3%A9line_Dion_en_2013_(cropped).JPG", class: "avatar-large" %>
+    </div>
+    <div class="flex-grow-1">
+      <strong><div class="text-start text-wrap fs-5 mx-3"><%= current_user.first_name %>  <i class="fa-solid fa-circle-check" style="color: #1cb51c;"></i></div></strong>
+      <div class="text-start text-wrap fs-6 ms-3 me-2"><i class="fa-regular fa-envelope me-2"></i><%= current_user.email %></div>
+    </div>
+    <div>
+      <div class="text-start text-wrap fs-6 mx-3"><%= @ads.count %> Ads posted</div>
+      <div class="text-start text-wrap fs-6 mx-3"><%= @bookings.count %> Bookings requested</div>
+      <div class="text-start text-wrap fs-6 mx-3">
+        <% @ads.each do |ad| %>
+          <% ad.bookings.each do |booking| %>
+            <% if booking.status == true %>
+              <% @pending_bookings << booking %>
+            <% end %>
+          <% end %>
+          <% @pending_bookings %>
+        <% end %>
+      <%= @pending_bookings.count %> Pending approvals</div>
+    </div>
+  </div>
+</div>
 
-  <div class="d-flex p-2">
-    <div class="col col-3">
-      <div class="panel space-2 m-2">
-        <%= image_tag "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/C%C3%A9line_Dion_en_2013_%28cropped%29.JPG/1024px-C%C3%A9line_Dion_en_2013_(cropped).JPG", class: "rounded mx-auto d-block", style: "height: 150px" %>
-        <br>
-        <div class="panel-body">
-          <strong><div class="text-center text-wrap fs-5 mb-2"><%= current_user.first_name %></div></strong>
-          <div class="text-center text-wrap fs-8"><i class="fa-regular fa-envelope"></i><%= current_user.email %></div>
-        </div>
+<div class="container-fluid justify-content-center">
 
-        <br>
-        <h5 class="text-center text-wrap fs-5 m-3"><strong>My posted ads</strong></h5>
+  <div class="d-flex justify-content-center">
+
+    <div class="col col-4 m-2">
+      <h2 class="text-center m-3">My posted ads</h2>
         <div>
           <% @ads.each do |ad| %>
-            <div class="card my-2">
+            <div class="card-product my-2">
               <% ad.photos.each do |photo| %>
                 <%= cl_image_tag photo.key, crop: :fill %>
-                <% end %>
-
-              <%= link_to ad_path(ad), style:"text-decoration: none" do %>
-                <div class="card p-2">
-                  <h5><strong>Ad reference #<%= ad.id %>: <%= ad.name %></strong></h5>
-                    <p class="card-text">Booking offers: <%= ad.bookings.count %>
-                    <p class="card-text">Category: <%= ad.category %>.</p>
-                </div>
               <% end %>
+              <%= link_to ad_path(ad), style:"text-decoration: none" do %>
+              <div class="card-product-infos">
+                <h2 class="card-title">Ad reference #<%= ad.id %>:</h2>
+                <h2 class="card-title"><%= ad.name %></h2>
+                  <p class="card-text">Booking offers: <%= ad.bookings.count %></p>
+                  <p class="card-text">Category: <%= ad.category %></p>
+              <% end %>
+              </div>
             </div>
           <% end %>
         </div>
-      </div>
     </div>
 
-    <div class="col-5 m-2">
-      <h2 class="text-center">Pending approvals</h2>
-      <br>
+    <div class="col-4 m-2">
+      <h2 class="text-center m-3 ", data-controller="toggle">Pending approvals</h2>
         <div>
           <% @ads.each do |ad| %>
             <% ad.bookings.each do |booking| %>
               <div class="card-product my-2">
                 <%= cl_image_tag booking.ad.photos.first.key, crop: :fill %>
-              <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
+                <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
                 <div class="card-product-infos">
-                  <h2 class="card-title">Ad reference #<%= booking.ad.id %>: <%= booking.ad.name %></h2>
-                  <p class="card-text">Status:<% if booking.status %>
-                    <%= "Confirmed" %>
-                    <% elsif booking.status == nil %>
-                    <%= "Pending" %>
-                    <% else %>
-                    <%= "Refused" %>
-                  <% end %></p>
-                  <p class="card-text">Category: <%= booking.ad.category %>.</p>
+                  <h2 class="card-title">Ad reference #<%= booking.ad.id %>: </h2>
+                  <h2 class="card-title"><%= booking.ad.name %></h2>
+                    <p class="card-text">Status:<% if booking.status %>
+                      <%= "Confirmed" %>
+                      <% elsif booking.status == nil %>
+                      <%= "Pending" %>
+                      <% else %>
+                      <%= "Refused" %>
+                    <% end %></p>
+                    <p class="card-text">Category: <%= booking.ad.category %></p>
                 </div>
-              <% end %>
                 <div class="card-text-end p-2">
-                  <%= button_to "Accept", accept_path(booking) %>
-                  <%= button_to "Decline", decline_path(booking) %>
+                  <% if booking.status %>
+                    <%= "" %>
+                  <% elsif booking.status == nil %>
+                    <%= button_to "Accept", accept_path(booking), :class => "btn btn-success btn-sm my-1" %>
+                    <%= button_to "Decline", decline_path(booking), :class => "btn btn-secondary btn-sm my-1" %>
+                  <% else %>
+                    <%= "" %>
+                  <% end %>
+            <% end %>
                 </div>
               </div>
             <% end %>
@@ -63,27 +86,27 @@
         </div>
     </div>
 
-    <div class="col-5 m-2">
-      <h2 class="text-center ">My booking requests</h2>
-      <br>
+    <div class="col-4 m-2">
+      <h2 class="text-center m-3">My booking requests</h2>
         <div>
           <% @bookings.each do |booking| %>
             <div class="card-product my-2">
-             <% booking.ad.photos.each do |photo| %>
+              <% booking.ad.photos.each do |photo| %>
                 <%= cl_image_tag photo.key, crop: :fill %>
-                <% end %>
+              <% end %>
               <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
               <div class="card-product-infos">
-                <h2>Ad reference: #<%= booking.ad_id %>: <%= booking.ad.name %></h2>
-                <p>Status: <% if booking.status %>
-                  <%= "Confirmed" %>
-                  <% elsif booking.status == nil %>
-                  <%= "Pending" %>
-                  <% else %>
-                  <%= "Refused" %>
+                <h2>Ad reference #<%= booking.ad_id %>:</h2>
+                <h2><%= booking.ad.name %></h2>
+                  <p>Status: <% if booking.status %>
+                    <%= "Confirmed" %>
+                    <% elsif booking.status == nil %>
+                    <%= "Pending" %>
+                    <% else %>
+                    <%= "Refused" %>
                   <% end %>
-                </p>
-                <p>Category: <%= booking.ad.category %></p>
+                  </p>
+                  <p>Category: <%= booking.ad.category %></p>
               </div>
               <% end %>
             </div>
