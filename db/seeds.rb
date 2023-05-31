@@ -21,7 +21,7 @@ puts "starting seeding"
 
 15.times do
   user = User.new(
-    email: Faker::Internet.email, password: "123456" ,first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.full_address
+    email: Faker::Internet.email, password: "123456" ,first_name: Faker::Name.first_name, last_name: Faker::Name.last_name
     )
   user.save!
   3.times do
@@ -30,6 +30,7 @@ puts "starting seeding"
       name: Faker::Construction.heavy_equipment,
       category: Ad::CATEGORIES.sample,
       description: Faker::Lorem.paragraph(sentence_count: 4),
+      address: Faker::Address.full_address
     )
     ad.photos.attach(io: file, filename: "#{ad.name}.png", content_type: "image/png")
     ad.user = user
