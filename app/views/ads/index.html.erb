@@ -21,7 +21,11 @@
       <div class="col-12 col-sm-6 col-md-4 my-3">
         <%= link_to ad_path(ad), style:"text-decoration: none" do %>
           <div class="card-product">
-            <%= cl_image_tag ad.photos.first.key, height: 300, width: 400, crop: :fill %>
+            <% if ad.photos.first %>
+              <%= cl_image_tag ad.photos.first.key, height: 300, width: 400, crop: :fill %>
+            <% else %>
+              <img src="https://source.unsplash.com/random/?Dog/" alt="", height=300, width=400>
+            <% end %>
             <div class="card-product-infos">
               <h2> <%= ad.name %> </h2>
               <p> <%= ad.category %> </p>
