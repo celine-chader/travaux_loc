@@ -39,8 +39,8 @@
           <% @ads.each do |ad| %>
             <% ad.bookings.each do |booking| %>
 
-              <div class="card-product my-2">
                 <%= cl_image_tag booking.ad.photos.first.key, crop: :fill %>
+              <div class="card-product my-2">
               <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
                 <div class="card-product-infos">
                   <h2 class="card-title">Ad reference #<%= booking.ad.id %>: <%= booking.ad.name %></h2>

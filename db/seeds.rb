@@ -25,7 +25,7 @@ puts "starting seeding"
     )
   user.save!
   3.times do
-    file = URI.open(Faker::LoremFlickr.image(size: "400x400"))
+    file = URI.open(Faker::LoremFlickr.image(size: "400x400", search_terms: ['tools']))
     ad = Ad.new(
       name: Faker::Construction.heavy_equipment,
       category: Ad::CATEGORIES.sample,
