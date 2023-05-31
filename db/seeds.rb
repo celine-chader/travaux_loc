@@ -21,11 +21,11 @@ puts "starting seeding"
 
 15.times do
   user = User.new(
-    email: Faker::Internet.email, password: "123456" ,first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.full_address
+    email: Faker::Internet.email, password: "123456", first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address: Faker::Address.full_address
     )
   user.save!
   3.times do
-    file = URI.open(Faker::LoremFlickr.image(size: "400x400"))
+    file = URI.open(Faker::LoremFlickr.image(size: "400x400", search_terms: ['tools']))
     ad = Ad.new(
       name: Faker::Construction.heavy_equipment,
       category: Ad::CATEGORIES.sample,
