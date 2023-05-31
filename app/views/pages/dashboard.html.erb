@@ -51,11 +51,11 @@
     </div>
 
     <div class="col-5 m-2">
-      <h2 class="text-center">My booking requests</h2>
+      <h2 class="text-center ">My booking requests</h2>
       <br>
         <div>
           <% @bookings.each do |booking| %>
-            <div class="card-product">
+            <div class="card-product my-2">
              <% booking.ad.photos.each do |photo| %>
                 <%= cl_image_tag photo.key, crop: :fill %>
                 <% end %>
