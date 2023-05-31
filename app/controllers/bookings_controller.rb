@@ -7,30 +7,29 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @user = User.find(params[:user_id])
     @ad = Ad.find(params[:ad_id])
-    @booking.user = @user
+    @booking.user = current_user
     @booking.ad = @ad
     if @booking.save
-      redirect_to ad_path(@ad)
+      redirect_to dashboard_path
     else
       render "/ads/show", status: :unprocessable_entity
     end
   end
 
-  def edit
+  def accept
     @booking = Booking.find(params[:id])
+    @booking.update(status: true)
   end
 
-  def update
+  def decline
     @booking = Booking.find(params[:id])
-    @booking.update(booking_params)
-    redirect_to "/dashboard"
+    @booking.update(status: false)
   end
 
   private
 
   def booking_params
-    params.require(:booking).permit(:availability)
+    params.require(:booking).permit(:start_date, :end_date, :status)
   end
 end

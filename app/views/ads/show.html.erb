@@ -1,18 +1,17 @@
 <div class="card-body">
   <h2><%= @ad.name %></h2>
-  <%= image_tag("homepage_banner", class:"rounded",
-      width: 300, height: 300, crop: :fill) %>
-  <p>
-  <strong>Category</strong>
-  <%= @ad.category %>
-  </p>
-  <strong>Description</strong>
-    <hr>
-  <p class="card-text mx-auto"><%= @ad.description %></p>
+  <div class="d-flex">
+    <%= image_tag("AdobeStock_219424653-BD", class:"rounded",
+        width: 300, height: 300, crop: :fill) %>
+    <div class="m-2">
+    <p><strong>Category : </strong> <%= @ad.category %></p>
+    <p><strong>Description</strong></p>
+    <p class="card-text mx-auto"><%= @ad.description %></p>
+    </div>
+  </div>
 </div>
 <hr>
 <%= render 'bookings/form' %>
-</div>
 <br>
 <div>
 <%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>

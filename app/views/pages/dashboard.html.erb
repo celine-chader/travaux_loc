@@ -35,19 +35,20 @@
       <h2 class="text-center">Pending requests</h2>
       <br>
         <div>
-          <% @pending_requests.each do |ad| %>
+          <% @ads.each do |ad| %>
+            <% ad.bookings.each do |booking| %>
             <div class="panel-body mt-2">
               <div class="card">
-                <% ad.photos.each do |photo| %>
-                  <%= cl_image_tag photo.key, crop: :fill %>
-                  <% end %>
-
+                <%# <%= cl_image_tag booking.ad.photos.first.key, crop: :fill %> 
                 <div class="card-body">
-                  <h5 class="card-title"><%= ad.name %></h5>
-                  <p class="card-text"><%= ad.category %>.</p>
+                  <h5 class="card-title"><%= booking.ad.name %></h5>
+                  <p class="card-text"><%= booking.ad.category %>.</p>
+                  <%= button_to "Accept", accept_path(booking) %>
+                  <%= button_to "Decline", decline_path(booking) %>
                 </div>
               </div>
             </div>
+            <% end %>
           <% end %>
         </div>
     </div>
