@@ -2,9 +2,15 @@
   justify-content: space-between;
   background: white;
   font-family: Roboto;
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 400;
+  font-size: 15px;
 }
+
+.navbar-lewagon .category {
+  border-radius: 30px;
+  vertical-align: baseline;
+}
+
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
