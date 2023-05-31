@@ -8,6 +8,15 @@ class AdsController < ApplicationController
     else
       @ads = Ad.all
     end
+
+    @ads = Ad.all
+    # The `geocoded` scope filters only Ads with coordinates
+    @markers = @ads.geocoded.map do |ad|
+      {
+        lat: ad.latitude,
+        lng: ad.longitude
+      }
+    end
   end
 
   def show
@@ -48,7 +57,7 @@ class AdsController < ApplicationController
   end
 
   def ad_params
-    params.require(:ad).permit(:name, :category, :description, :availability, photos: [])
+    params.require(:ad).permit(:name, :category, :description, :availability, :address, photos: [])
   end
 
   def search_params
