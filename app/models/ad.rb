@@ -8,6 +8,7 @@ class Ad < ApplicationRecord
   validates :description, presence: true
   validates :address, presence:true
   validates :category, inclusion: { in: CATEGORIES }
+  validates :price, presence: true
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 end

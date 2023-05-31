@@ -3,11 +3,11 @@
   <%= simple_form_for(@ad) do |f| %>
     <%= f.input :name %>
     <%= f.input :category, collection: Ad::CATEGORIES %>
+    <%= f.input :price %>
     <%= f.input :address %>
     <%= f.input :description %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.input :availability, as: :date %>
-     <%= f.input :address %>
     <%= f.button :submit, "Create", class:"btn btn-dark" %>
   <% end %>
 </div>
