@@ -35,13 +35,13 @@
           <% @ads.each do |ad| %>
             <div class="card-product my-2">
               <% ad.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, crop: :fill, class:"p-1" %>
+                <%= cl_image_tag photo.key, crop: :fill %>
               <% end %>
               <%= link_to ad_path(ad), style:"text-decoration: none" do %>
               <div class="card-product-infos">
                 <h2 class="card-title"><%= ad.name %></h2>
-                  <p class="card-text">Booking offers: <%= ad.bookings.count %></p>
-                  <p class="card-text">Category: <%= ad.category %></p>
+                  <p class="card-text"><strong>Réservations -</strong> <%= ad.bookings.count %></p>
+                  <p class="card-text"><strong>Catégorie -</strong> <%= ad.category %></p>
               <% end %>
               </div>
             </div>
@@ -50,37 +50,37 @@
     </div>
 
     <div class="col-4 m-2">
-      <h4 class="text-center m-3 dashboard-style", data-controller="toggle">Demandes de réservations</h4>
+      <h4 class="text-center m-3 dashboard-style" >Demandes de réservations</h4>
         <div>
           <% @ads.each do |ad| %>
             <% ad.bookings.each do |booking| %>
-              <div class="card-product my-2" data-toggle-target="card">
-                <%= cl_image_tag booking.ad.photos.first.key, crop: :fill, class:"p-1" %>
-                <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
-                <div class="card-product-infos">
-                  <h2 class="card-title"><%= booking.ad.name %></h2>
-                    <p class="card-text">Status:
-                      <% if booking.status %>
-                        <%= "Confirmed" %>
-                      <% elsif booking.status == nil %>
-                        <%= "Pending" %>
-                      <% else %>
-                        <%= "Refused" %>
-                    <% end %></p>
-                    <p class="card-text">Category: <%= booking.ad.category %></p>
-                  </div>
-                <% end %>
-                <div class="card-text-end p-2">
-                  <% if booking.status %>
-                    <% accept_path(booking) %>
-                  <% elsif booking.status == nil %>
-                    <%= button_to "Accept", accept_path(booking), :class => "btn btn-success btn-sm my-1" %>
-                    <%= button_to "Decline", decline_path(booking), :class => "btn btn-secondary btn-sm my-1" %>
-                  <% else %>
-                    <% decline_path(booking) %>
+              <% if booking.status != false %>
+                <div class="card-product my-2" >
+                  <%= cl_image_tag booking.ad.photos.first.key, crop: :fill %>
+                  <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
+                    <div class="card-product-infos">
+                      <h2 class="card-title"><%= booking.ad.name %></h2>
+                        <p class="card-text"><strong>Statut -</strong>
+                          <% if booking.status %>
+                            <%= "Confirmed" %>
+                          <% elsif booking.status == nil %>
+                            <%= "Pending" %>
+                          <% end %></p>
+                        <p class="card-text"><strong>Catégorie -</strong> <%= booking.ad.category %></p>
+                    </div>
                   <% end %>
+                  <div class="card-text-end p-2">
+                    <% if booking.status %>
+                      <% accept_path(booking) %>
+                    <% elsif booking.status == nil %>
+                      <%= button_to "Accept", accept_path(booking), :class => "btn btn-success btn-sm my-1" %>
+                      <%= button_to "Decline", decline_path(booking), :class => "btn btn-outline-danger btn-sm my-1" %>
+                    <% else %>
+                      <% decline_path(booking) %>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
@@ -92,12 +92,12 @@
           <% @bookings.each do |booking| %>
             <div class="card-product my-2">
               <% booking.ad.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, crop: :fill, class:"p-1"%>
+                <%= cl_image_tag photo.key, crop: :fill %>
               <% end %>
               <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
               <div class="card-product-infos">
                 <h2><%= booking.ad.name %></h2>
-                  <p>Status: <% if booking.status %>
+                  <p><strong>Statut -</strong> <% if booking.status %>
                     <%= "Confirmed" %>
                     <% elsif booking.status == nil %>
                     <%= "Pending" %>
@@ -105,7 +105,7 @@
                     <%= "Refused" %>
                   <% end %>
                   </p>
-                  <p>Category: <%= booking.ad.category %></p>
+                  <p><strong>Catégorie - </strong><%= booking.ad.category %></p>
               </div>
               <% end %>
             </div>
