@@ -3,8 +3,9 @@ class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :destroy, :edit, :update]
 
   def index
-    if params[:category_id] && search_params[:category_id].present?
-      @ads = Ad.where(category: search_params[:category_id])
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR category ILIKE :query"
+      @ads = Ad.where(sql_query, query: "%#{params[:query]}%")
     else
       @ads = Ad.all
     end
@@ -19,7 +20,6 @@ class AdsController < ApplicationController
       }
     end
   end
-
 
   def show
     @booking = Booking.new
