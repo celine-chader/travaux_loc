@@ -12,5 +12,6 @@ data-dynamic-booking-price-price-value="<%= @ad.price %>">
     } %>
     <%= f.submit 'Schedule your appointment', class: "btn btn-success" %>
   <% end %>
-  Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @ad.price %></span> €
+  <br>
+  <strong>Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @ad.price %></span> €</strong>
 </div>
