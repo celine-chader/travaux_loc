@@ -3,5 +3,6 @@
     <h6><strong><%= ad.name %></strong></h6>
     <h6><span class="badge bg-secondary"><%= ad.price %>€</span></h6>
     <p><%= ad.address %></p>
+    <%= link_to "Lien vers l'article", ad_path(ad), class:"btn btn-sm link-ads" %>
   </div>
 </div>
