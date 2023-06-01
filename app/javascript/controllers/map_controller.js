@@ -29,10 +29,10 @@ export default class extends Controller {
   }
 
   fire(event) {
-    if (event.currentTarget.innerText === "Liste articles") {
+    if (event.currentTarget.innerText === "Liste des articles") {
       event.currentTarget.innerText = "Afficher la carte"
     } else {
-      event.currentTarget.innerText = "Liste articles"
+      event.currentTarget.innerText = "Liste des articles"
     }
     this.mapElementTarget.classList.toggle("d-none");
     mapboxgl.accessToken = 'pk.eyJ1IjoiZW1ldTkyMjcwIiwiYSI6ImNsaG9udjI5MzFtNjkza3MxYTVhZmNlbG0ifQ.T06ttUogvxWXwfDNVI1bqA'
