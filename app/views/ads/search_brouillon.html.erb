@@ -1,14 +1,17 @@
+
 <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path "homepage_banner.jpg", height: 300, width: 400, crop: :fill %>')">
   All ads
 </div>
-<%= form_with url: ads_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Trouver un article"
-  %>
-  <%= submit_tag "Recherche", class: "btn btn-primary" %>
-<% end %>
+
+
+  <%= simple_form_for :category_id, url: ads_path, method: :get, class: "simple_form search" do |f|%>
+    <div class="search-form-control form-group my-3">
+        <%= f.input :category_id, placeholder: "catégories", collection: Ad::CATEGORIES %>
+        <button name="button" type="submit" class="btn btn-flat mt-4">
+          <i class="fas fa-search"></i> Search
+        </button>
+    </div>
+  <% end %>
 
 
 <div data-controller="map" class="mt-5 w-100" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -40,3 +43,6 @@
       </div>
     <% end %>
   </div>
+
+
+<%# <div data-controller="map" class="start-50 translate-middle position-fixed bottom-0 mt-5 w-100"> %>
