@@ -1,23 +1,35 @@
 <div class="container_show">
-  <div class="card-body">
-    <div class="show_title"><%= @ad.name %></div>
-    <div class="d-flex">
-      <% @ad.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, class:"photo-ad" %>
-      <% end %>
-      <div class="m-2">
-      <p><strong>Category : </strong> <%= @ad.category %></p>
-      <p><strong>Description : </strong> <%= @ad.description %></p>
-      <p><strong>Address : </strong><%= @ad.address %></p>
-      <p><strong>Price per day :</strong><%= @ad.price %> €</p>
+  <div class ="row">
+    <div class="col-lg-6">
+      <div class="card-body">
+        <div class="show_title"><%= @ad.name %></div>
+        <div class="d-flex">
+          <% @ad.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, class:"photo-ad" %>
+          <% end %>
+          <div class="m-2">
+          <p><strong>Category : </strong> <%= @ad.category %></p>
+          <p><strong>Description : </strong> <%= @ad.description %></p>
+          <p><strong>Address : </strong><%= @ad.address %></p>
+          <p><strong>Price per day :</strong><%= @ad.price %> €</p>
+          </div>
+        </div>
+      </div>
+      <br>
+      <p><strong>Book it !</strong></p>
+      <%= render 'shared/form' %>
+      <br>
+      <div>
+      <%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>
       </div>
     </div>
-  </div>
-  <br>
-  <p><strong>Book it !</strong></p>
-  <%= render 'shared/form' %>
-  <br>
-  <div>
-  <%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>
+    <div class="col-lg-6">
+      <div data-toggle-target="togglableElement map" style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      </div>
+      </div>
+    </div>
   </div>
 </div>
