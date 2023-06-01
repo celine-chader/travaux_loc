@@ -63,9 +63,9 @@
                         <h2 class="card-title"><%= booking.ad.name %></h2>
                           <p class="card-text"><strong>Statut -</strong>
                             <% if booking.status %>
-                              <%= "Confirmed" %>
+                              <%= "confirmé" %>
                             <% elsif booking.status == nil %>
-                              <%= "Pending" %>
+                              <%= "en attente" %>
                             <% end %></p>
                           <p class="card-text"><strong>Catégorie -</strong> <%= booking.ad.category %></p>
                       </div>
@@ -74,8 +74,8 @@
                       <% if booking.status %>
                         <% accept_path(booking) %>
                       <% elsif booking.status == nil %>
-                        <%= button_to "Accept", accept_path(booking), :class => "btn btn-blue btn-sm my-1" %>
-                        <div class="text-center"><%= button_to "Decline", decline_path(booking), :class => "btn btn-red btn-sm my-1" %></div>
+                        <%= button_to "Accepter", accept_path(booking), :class => "btn btn-blue btn-sm my-1" %>
+                        <div class="text-center"><%= button_to "Décliner", decline_path(booking), :class => "btn btn-red btn-sm my-1" %></div>
                       <% else %>
                         <% decline_path(booking) %>
                       <% end %>
@@ -99,11 +99,11 @@
                 <div class="card-product-infos">
                   <h2><%= booking.ad.name %></h2>
                     <p><strong>Statut -</strong> <% if booking.status %>
-                      <%= "Confirmed" %>
+                      <%= "confirmé" %>
                       <% elsif booking.status == nil %>
-                      <%= "Pending" %>
+                      <%= "en attente" %>
                       <% else %>
-                      <%= "Refused" %>
+                      <%= "refusé" %>
                     <% end %>
                     </p>
                     <p><strong>Catégorie - </strong><%= booking.ad.category %></p>
