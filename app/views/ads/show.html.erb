@@ -1,23 +1,33 @@
-<div class="container_show">
-  <div class="card-body">
-    <div class="show_title"><%= @ad.name %></div>
-    <div class="d-flex">
-      <% @ad.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, class:"photo-ad" %>
-      <% end %>
-      <div class="m-2">
-      <p><strong>Category : </strong> <%= @ad.category %></p>
-      <p><strong>Description : </strong> <%= @ad.description %></p>
-      <p><strong>Address : </strong><%= @ad.address %></p>
-      <p><strong>Price per day : </strong><%= @ad.price %> €</p>
+<div class="container-show">
+  <div class ="row mx-0 justify-content-between w-100">
+    <div class="ps-5 col-6">
+      <div class="card-body">
+        <div class="show_title"><%= @ad.name %></div>
+        <div class="d-flex">
+          <% @ad.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, class:"photo-ad" %>
+          <% end %>
+          <div class="m-2">
+          <p><strong>Category : </strong> <%= @ad.category %></p>
+          <p><strong>Description : </strong> <%= @ad.description %></p>
+          <p><strong>Address : </strong><%= @ad.address %></p>
+          <p><strong>Price per day :</strong><%= @ad.price %> €</p>
+          </div>
+        </div>
+      </div>
+      <br>
+      <p><strong>Book it !</strong></p>
+      <%= render 'shared/form' %>
+      <br>
+      <div>
+      <%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>
       </div>
     </div>
-  </div>
-  <br>
-  <p><strong>Book it !</strong></p>
-  <%= render 'shared/form' %>
-  <br>
-  <div>
-  <%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>
+    <div class="col-6 map px-0">
+      <div data-controller="map" class="mt-5 w-100" data-map-marker-value="<%= @marker.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        <div data-map-target="mapShowElement"  style="width: 100%; height: 700px;">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
