@@ -7,11 +7,14 @@ export default class extends Controller {
     apiKey: String,
     markers: Array
   }
-  connect() {
-    mapboxgl.accessToken = this.apiKeyValue
+  static targets = ["mapElement", "toggableElement"]
+
+  fire() {
+    this.mapElementTarget.classList.toggle("d-none");
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZW1ldTkyMjcwIiwiYSI6ImNsaG9udjI5MzFtNjkza3MxYTVhZmNlbG0ifQ.T06ttUogvxWXwfDNVI1bqA'
 
     this.map = new mapboxgl.Map({
-      container: this.element,
+      container: this.mapElementTarget,
       style: "mapbox://styles/mapbox/streets-v10"
     })
     this.#addMarkersToMap();
@@ -19,6 +22,7 @@ export default class extends Controller {
   }
 
   #addMarkersToMap() {
+    console.log(this.markersValue)
     this.markersValue.forEach((marker) => {
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
@@ -26,7 +30,6 @@ export default class extends Controller {
     })
   };
   #fitMapToMarkers() {
-    console.log("test")
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
