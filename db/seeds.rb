@@ -46,7 +46,7 @@ ad_cdion2 = Ad.create!(
   category: "Bétonnière",
   user: cdion,
   description: "Belle bétonnière jaune presque neuve avec volant démultiplié pour les travaux de construction. Disponible tout de suite",
-  address: "12 rue de Rivoli, Paris",
+  address: "30 rue de Longchamp, Paris",
   price: 110
 )
 ad_cdion2.photos.attach(io: file, filename: "#{ad_cdion2.name}.png", content_type: "image/png")
@@ -125,7 +125,7 @@ ad_baptiste = Ad.create!(
   category: "Lève plaque",
   user: baptiste,
   description: "Cet appareil pour soulever les panneaux ou plaque de plâtre est vite monté et sert d'aide de montage dans la construction de cloisons intérieures ou cloisons sèches. Il soulève tout.",
-  address: "46 avenue Dausmenil, Paris",
+  address: "62 rue Alexandre Dumas, Paris",
   price: 19
 )
 ad_baptiste.photos.attach(io: file, filename: "#{ad_baptiste.name}.png", content_type: "image/png")
