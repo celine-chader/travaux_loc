@@ -9,7 +9,6 @@ class AdsController < ApplicationController
       @ads = Ad.all
     end
 
-
     # The `geocoded` scope filters only Ads with coordinates
     @markers = @ads.geocoded.map do |ad|
       {
