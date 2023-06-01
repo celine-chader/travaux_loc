@@ -70,6 +70,7 @@
                     <% end %></p>
                     <p class="card-text">Category: <%= booking.ad.category %></p>
                 </div>
+                <% end %>
                 <div class="card-text-end p-2">
                   <% if booking.status %>
                     <% accept_path(booking) %>
@@ -79,7 +80,6 @@
                   <% else %>
                     <% decline_path(booking) %>
                   <% end %>
-            <% end %>
                 </div>
               </div>
             <% end %>
