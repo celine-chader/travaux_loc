@@ -2,7 +2,7 @@ class Ad < ApplicationRecord
   has_many_attached :photos
   belongs_to :user
   has_many :bookings
-  CATEGORIES = %w[Excavators Loaders Paving Machines Backhoes Bulldozers Dump Trucks Trenchers Compactors Graders Telehandlers]
+  CATEGORIES = ["Diable", "Remorque", "Burineur perforateur", "Bétonnière", "Nettoyeur haute pression", "Mini pelle", "Tondeuse", "Ponceuse girafe", "Broyeur végétaux", "Lève plaque"]
 
   validates :name, presence: true
   validates :description, presence: true

@@ -26,14 +26,17 @@
         <%= link_to ad_path(ad), style:"text-decoration: none" do %>
           <div class="card-product">
             <% if ad.photos.first %>
-              <%= cl_image_tag ad.photos.first.key, height: 300, width: 400, crop: :fill %>
+              <%= cl_image_tag ad.photos.first.key %>
             <% else %>
               <img src="https://source.unsplash.com/random/?Dog/" alt="", height=300, width=400>
             <% end %>
             <div class="card-product-infos">
-              <h2> <%= ad.name %> </h2>
-              <p> <%= ad.category %> </p>
-              <p><%= ad.description %> <strong>relevant info</strong> only.</p>
+              <h2><%= ad.name %></h2>
+              <p><%= ad.description.truncate(50) %> <strong>relevant info</strong> only.</p>
+              <div class="d-flex justify-content-between">
+                <p><strong><%= ad.price %> €</strong></p>
+                <p><span class="badge bg-secondary"><%= ad.category %></span></p>
+              </div>
             </div>
           </div>
         <% end %>
