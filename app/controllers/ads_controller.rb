@@ -23,6 +23,10 @@ class AdsController < ApplicationController
 
   def show
     @booking = Booking.new
+    @marker = {
+      lat: @ad.latitude,
+      lng: @ad.longitude
+    }
   end
 
   def new
