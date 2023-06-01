@@ -15,7 +15,6 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <div class="<% unless controller_name == "ads" && action_name == "show" %>container<% end %>" style="min-height: 80vh;">
       <%= yield %>
     </div>
     <%= render "shared/flashes" %>

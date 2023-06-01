@@ -4,9 +4,9 @@
   font-family: "Roboto";
   background-color: white;
   color: #27374D;
-  border: #526D82;
   margin-top: 20px;
   padding: 30px;
+  padding-bottom: 0px;
   border-radius: 10px;
 }
 
@@ -14,7 +14,7 @@
   font-family: "Roboto";
   font-weight: 900;
   font-size: 25px;
-  color: #0014FF;
+  color: #023e8a;
 }
 
 
@@ -23,7 +23,7 @@
   padding-right: 20px;
   padding-top: 6px;
   padding-bottom: 6px;
-  background-color: #0014FF;
+  background-color: #023e8a;
   color: white;
   border-radius: 20px;
   font-weight: 500;
@@ -31,19 +31,7 @@
 }
 
 .btn-blue:hover {
-  background-color: none;
-  color: #0014FF;
-  border-color: #0014FF;
-  border-radius: 20px;
-  align-items: center;
+  background-color: #03045e;
+  color: white;
+  transition: 0.3s ease;
 }
-
-.link-ads {
-  color: #0014FF;
-}
-
-.link-ads:hover {
-  color: #0014FF;
-  opacity: 0.33;
-}
-
