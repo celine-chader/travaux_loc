@@ -15,9 +15,7 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <%# <p class="notice"><%= notice %></p>
-    <%# <p class="alert"><%= alert %></p>
-    <div class="container">
+    <div class="<% unless controller_name == "ads" && action_name == "show" %>container<% end %>">
       <%= yield %>
     </div>
     <%= render "shared/flashes" %>
