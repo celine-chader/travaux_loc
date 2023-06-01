@@ -1,7 +1,17 @@
-<div>
-  <%= simple_form_for [@ad, @booking], data: { controller: 'datepicker' } do |f| %>
-      <%= f.input :start_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "startTime" } } %>
-    <%= f.input :end_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "endTime" } } %>
+<div data-controller="dynamic-booking-price"
+data-dynamic-booking-price-price-value="<%= @ad.price %>">
+  <%= simple_form_for [@ad, @booking],
+                                      html: {
+                                        data: {
+                                          controller: 'datepicker'
+                                        }
+                                      } do |f| %>
+      <%= f.input :start_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "startTime", dynamic_booking_price_target: 'startDateInput', action: 'change->dynamic-booking-price#updatePrice' }
+      } %>
+    <%= f.input :end_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "endTime", dynamic_booking_price_target: 'endDateInput', action: 'change->dynamic-booking-price#updatePrice' }
+    } %>
     <%= f.submit 'Schedule your appointment', class: "btn btn-success" %>
   <% end %>
+  <br>
+  <strong>Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @ad.price %></span> €</strong>
 </div>
