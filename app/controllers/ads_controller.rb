@@ -13,10 +13,13 @@ class AdsController < ApplicationController
     @markers = @ads.geocoded.map do |ad|
       {
         lat: ad.latitude,
-        lng: ad.longitude
+        lng: ad.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {ad: ad}),
+        marker_html: render_to_string(partial: "marker")
       }
     end
   end
+
 
   def show
     @booking = Booking.new
