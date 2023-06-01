@@ -1,21 +1,23 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon" style="z-index:1;">
   <div class="container-fluid">
-    <%= link_to ads_path, class: "navbar-brand" do %>
-      <%= image_tag "logo-ok.png" %>
-    <% end %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="d-flex align-items-end justify-content-start">
+      <%= link_to ads_path, class: "navbar-brand" do %>
+        <%= image_tag "logo-ok.png" %>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <strong><p class="flex-grow-1">Travaux Loc</p></strong>
+    </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "All ads", "/ads", class: "nav-link category me-3" %>
+            <%= link_to "Annonces", "/ads", class: "nav-link category me-3" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "Create an ad", "/ads/new", class: "nav-link category me-4" %>
+            <%= link_to "Créer une annonce", "/ads/new", class: "nav-link category me-4" %>
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -23,7 +25,7 @@
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Dashboard", "/dashboard", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              <%= link_to "Déconnexion", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
         <% else %>

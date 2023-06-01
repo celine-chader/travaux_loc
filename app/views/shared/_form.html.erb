@@ -10,8 +10,8 @@ data-dynamic-booking-price-price-value="<%= @ad.price %>">
       } %>
     <%= f.input :end_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "endTime", dynamic_booking_price_target: 'endDateInput', action: 'change->dynamic-booking-price#updatePrice' }
     } %>
-    <%= f.submit 'Schedule your appointment', class: "btn btn-success" %>
+    <%= f.submit 'Choisir mes dates', class: "btn btn-success text-center" %>
   <% end %>
   <br>
-  <strong>Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @ad.price %></span> €</strong>
+  <div class="fs-5"><strong>Prix total : <span data-dynamic-booking-price-target="priceHolder"><%= @ad.price %></span> €</strong></div>
 </div>
