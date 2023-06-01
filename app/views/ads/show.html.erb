@@ -2,25 +2,25 @@
   <div class ="row mx-0 justify-content-between w-100">
     <div class="ps-5 col-6">
       <div class="card-body">
-        <div class="show_title"><%= @ad.name %></div>
+        <div class="show_title mb-3"><%= @ad.name %></div>
         <div class="d-flex">
           <% @ad.photos.each do |photo| %>
             <%= cl_image_tag photo.key, class:"photo-ad" %>
           <% end %>
           <div class="m-2">
-          <p><strong>Category : </strong> <%= @ad.category %></p>
+          <p><strong>Prix par jour : </strong><%= @ad.price %> €</p>
+          <p><strong>Catégorie : </strong> <%= @ad.category %></p>
           <p><strong>Description : </strong> <%= @ad.description %></p>
-          <p><strong>Address : </strong><%= @ad.address %></p>
-          <p><strong>Price per day :</strong><%= @ad.price %> €</p>
+          <p><strong>Adresse: </strong><%= @ad.address %></p>
+          <p><strong>Posté par : </strong><%= @ad.user.first_name %> <%= @ad.user.last_name %> le <%= @ad.created_at.strftime("%m/%d/%Y") %></p>
           </div>
         </div>
       </div>
-      <br>
-      <p><strong>Book it !</strong></p>
+      <div class="fs-4 my-4"><strong>Réservez maintenant !</strong></div>
       <%= render 'shared/form' %>
       <br>
       <div>
-      <%= link_to "Back to Ads", ads_path, class:"btn btn-outline-dark" %>
+      <%= link_to "Toutes les annonces", ads_path, class:"btn btn-outline-dark" %>
       </div>
     </div>
     <div class="col-6 map px-0">
