@@ -19,35 +19,58 @@ User.destroy_all
 
 puts "starting seeding"
 
-users = User.new([{ email: "celine.dion@gmail.com", password: "123456", first_name: Faker::Name.first_name, last_name:}, {}])
+puts "seeding users"
+cdion = User.create!(email: "celine.dion@gmail.com", password: "123456", first_name: "Céline", last_name: "Dion")
+# celine = User.create!(email: "celine.chader@gmail.com", password: "123456", first_name: "Céline", last_name: "Chader")
+# boubou = User.create!(email: "boubouboubs@gmail.com", password: "123456", first_name: "Stéphanie", last_name: "Boubou")
+# armelle = User.create!(email: "armelle.rabbani@gmail.com", password: "123456", first_name: "Armelle", last_name: "Rabbani")
+# amal = User.create!(email: "amal.rabbani@gmail.com", password: "123456", first_name: "Amal", last_name: "Rabbani")
+# david = User.create!(email: "david.serrano@gmail.com", password: "123456", first_name: "David", last_name: "Serrano")
+# baptiste = User.create!(mail: "baptiste@lewagon.com", password: "123456", first_name: "Baptiste", last_name: "Lewagon")
 
-15.times do
-  user = User.new(
-    email: Faker::Internet.email, password: "123456" ,first_name: Faker::Name.first_name, last_name: Faker::Name.last_name
-    )
-  user.save!
-  3.times do
-    file = URI.open(Faker::LoremFlickr.image(size: "400x400", search_terms: ['tools']))
-    ad = Ad.new(
-      name: Faker::Construction.heavy_equipment,
-      category: Ad::CATEGORIES.sample,
-      description: Faker::Lorem.paragraph(sentence_count: 4),
-      address: Faker::Address.full_address,
-      price: (10..1000).to_a.sample
-    )
-    ad.photos.attach(io: file, filename: "#{ad.name}.png", content_type: "image/png")
-    ad.user = user
-    ad.save!
-    2.times do
-      booking = Booking.new(
-        start_date: ["2023-06-12", "2023-06-04", "2023-06-02", "2023-06-08", "2023-06-07", "2023-06-11"].sample,
-        end_date: ["2023-06-13", "2023-06-16", "2023-07-01", "2023-06-20", "2023-06-15", "2023-07-03"].sample,
-      )
-      booking.ad = Ad.all.sample
-      booking.user = User.all.sample
-      booking.save!
-    end
-  end
-end
+puts "seeding ads"
+file = URI.open('https://media.castorama.fr/is/image/Castorama/perceuse-visseuse-sans-fil-brushless-erbauer-edd18-li-2-18v-4ah~3663602798767_01c?$MOB_PREV$&$width=618&$height=618')
+
+ad_cdion1 = Ad.create!(
+  name: "perceuse",
+  category: "Excavators",
+  user: cdion,
+  description: "belle perceuse",
+  address: "12 rue de Rivoli, Paris",
+  price: 20
+)
+ad_cdion1.photos.attach(io: file, filename: "#{ad_cdion1.name}.png", content_type: "image/png")
+
+
+# puts "seeding bookings"
+
+# 15.times do
+#   user = User.new(
+#     email: Faker::Internet.email, password: "123456" ,first_name: Faker::Name.first_name, last_name: Faker::Name.last_name
+#     )
+#   user.save!
+#   3.times do
+#     file = URI.open(Faker::LoremFlickr.image(size: "400x400", search_terms: ['tools']))
+#     ad = Ad.new(
+#       name: Faker::Construction.heavy_equipment,
+#       category: Ad::CATEGORIES.sample,
+#       description: Faker::Lorem.paragraph(sentence_count: 4),
+#       address: Faker::Address.full_address,
+#       price: (10..1000).to_a.sample
+#     )
+#     ad.photos.attach(io: file, filename: "#{ad.name}.png", content_type: "image/png")
+#     ad.user = user
+#     ad.save!
+#     2.times do
+#       booking = Booking.new(
+#         start_date: ["2023-06-12", "2023-06-04", "2023-06-02", "2023-06-08", "2023-06-07", "2023-06-11"].sample,
+#         end_date: ["2023-06-13", "2023-06-16", "2023-07-01", "2023-06-20", "2023-06-15", "2023-07-03"].sample,
+#       )
+#       booking.ad = Ad.all.sample
+#       booking.user = User.all.sample
+#       booking.save!
+#     end
+#   end
+# end
 
 puts "finished seeding"
