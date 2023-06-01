@@ -1,11 +1,14 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky">
   <div class="container-fluid">
-    <%= link_to ads_path, class: "navbar-brand" do %>
-      <%= image_tag "logo-ok.png" %>
-    <% end %>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="d-flex align-items-end justify-content-start">
+      <%= link_to ads_path, class: "navbar-brand" do %>
+        <%= image_tag "logo-ok.png" %>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <p class="flex-grow-1">Travaux Loc</p>
+    </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
