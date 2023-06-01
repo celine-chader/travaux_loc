@@ -1,0 +1,49 @@
+.container-form {
+  width: 800px;
+  margin: auto;
+  font-family: "Roboto";
+  background-color: white;
+  color: #27374D;
+  border: #526D82;
+  margin-top: 20px;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.container-form h5 {
+  font-family: "Roboto";
+  font-weight: 900;
+  font-size: 25px;
+  color: #0014FF;
+}
+
+
+.btn-blue {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: #0014FF;
+  color: white;
+  border-radius: 20px;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.btn-blue:hover {
+  background-color: none;
+  color: #0014FF;
+  border-color: #0014FF;
+  border-radius: 20px;
+  align-items: center;
+}
+
+.link-ads {
+  color: #0014FF;
+}
+
+.link-ads:hover {
+  color: #0014FF;
+  opacity: 0.33;
+}
+
