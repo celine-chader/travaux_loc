@@ -7,8 +7,8 @@ class AdsController < ApplicationController
     if params[:query].present?
       sql_query = "name ILIKE :query OR category ILIKE :query"
       @ads = Ad.where(sql_query, query: "%#{params[:query]}%")
-    # elsif params[:category].present?
-    #   @ads = Ad.where(category: params[:category])
+    elsif params[:search][:category].present?
+      @ads = Ad.where(category: params[:search][:category])
     else
       @ads = Ad.all
     end

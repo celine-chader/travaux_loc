@@ -22,6 +22,20 @@
       </div>
   </div>
 
+  <div>
+    <%= simple_form_for :search, url: ads_path, method: :get do |f| %>
+      <%= f.input :category, collection: Ad::CATEGORIES %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+
+   <div>
+    <%= simple_form_for :search, url: ads_path, method: :get do |f| %>
+      <%= f.input :category, collection: Ad::CATEGORIES %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+
     <div class="row">
       <% @ads.each do |ad| %>
         <div class="col-12 col-sm-6 col-md-4 my-3">
