@@ -103,15 +103,15 @@ ad_armelle = Ad.create!(
 ad_armelle.photos.attach(io: file, filename: "#{ad_armelle.name}.png", content_type: "image/png")
 
 file = URI.open('https://www.cgl.fr/wp-content/uploads/2021/04/MP-07-web-1.jpg')
-ad_celine = Ad.create!(
+ad_baptiste = Ad.create!(
   name: "Mini pelle Yanmar",
   category: "Mini pelle",
-  user: celine,
+  user: baptiste,
   description: "Mini-pelle 2T500 cabine équipée d’un attache-godet rapide type Morin. Poids : 2 770kg.",
   address: "80 rue de Crimée, Paris",
   price: 195
 )
-ad_celine.photos.attach(io: file, filename: "#{ad_celine.name}.png", content_type: "image/png")
+ad_baptiste.photos.attach(io: file, filename: "#{ad_baptiste.name}.png", content_type: "image/png")
 
 file = URI.open('https://www.manutan.fr/fstrz/r/s/www.manutan.fr/img/S/GRP/ST/AIG8752468.jpg?frz-v=81')
 ad_david = Ad.create!(
@@ -127,43 +127,71 @@ ad_david = Ad.create!(
 ad_david.photos.attach(io: file, filename: "#{ad_david.name}.png", content_type: "image/png")
 
 file = URI.open('https://m.media-amazon.com/images/I/712Aw8rCPrL._SL1500_.jpg')
-ad_baptiste = Ad.create!(
+ad_boubou = Ad.create!(
   name: "Superbe lève plaque rouge",
   category: "Lève plaque",
-  user: baptiste,
+  user: boubou,
   description: "Cet appareil pour soulever les panneaux ou plaque de plâtre est vite monté et sert d'aide de montage dans la construction de cloisons intérieures ou cloisons sèches. Il soulève tout.",
   address: "62 rue Alexandre Dumas, Paris",
   price: 19
 )
-ad_baptiste.photos.attach(io: file, filename: "#{ad_baptiste.name}.png", content_type: "image/png")
+ad_boubou.photos.attach(io: file, filename: "#{ad_boubou.name}.png", content_type: "image/png")
 
-# puts "seeding bookings"
-# booking1 = Booking.create!(
-#   ad_id: ad_celine,
-#   user_id: cdion,
-#   start_date: "2023-06-12",
-#   end_date: "2023-06-16"
-# )
+puts "seeding bookings"
+booking1 = Booking.create!(
+  ad: ad_baptiste,
+  user: cdion,
+  start_date: "2023-06-13",
+  end_date: "2023-06-16"
+)
 
-# booking2 = Booking.create!(
-#   start_date: "2023-06-04",
-#   end_date: "2023-06-13"
-# )
-# booking2.ad = ad_armelle
-# booking2.user = cdion
+booking2 = Booking.create!(
+  ad: ad_armelle,
+  user: cdion,
+  start_date: "2023-06-04",
+  end_date: "2023-06-11"
+)
 
-# booking3 = Booking.create!(
-#   start_date: "2023-06-02",
-#   end_date: "2023-06-05"
-# )
-# booking3.ad = ad_david
-# booking3.user = cdion
+booking3 = Booking.create!(
+  ad: ad_david,
+  user: cdion,
+  start_date: "2023-06-02",
+  end_date: "2023-06-05"
+)
 
-# booking4 = Booking.create!(
-#   start_date: "2023-08-29",
-#   end_date: "2023-08-30"
-# )
-# booking4.ad = ad_baptiste
-# booking4.user = cdion
+booking4 = Booking.create!(
+  ad: ad_boubou,
+  user: cdion,
+  start_date: "2023-07-27",
+  end_date: "2023-07-29"
+)
+
+booking5 = Booking.create!(
+  ad: ad_cdion1,
+  user: armelle,
+  start_date: "2023-07-09",
+  end_date: "2023-07-13"
+)
+
+booking6 = Booking.create!(
+  ad: ad_cdion2,
+  user: david,
+  start_date: "2023-06-24",
+  end_date: "2023-06-28"
+)
+
+booking7 = Booking.create!(
+  ad: ad_cdion3,
+  user: baptiste,
+  start_date: "2023-08-01",
+  end_date: "2023-08-03"
+)
+
+booking8 = Booking.create!(
+  ad: ad_cdion4,
+  user: boubou,
+  start_date: "2023-06-11",
+  end_date: "2023-06-15"
+)
 
 puts "finished seeding"
