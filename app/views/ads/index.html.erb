@@ -2,6 +2,7 @@
   <h1 class="text-center" >Du matériel à portée de main !</h1>
     <div>
       <%= form_with url: ads_path, method: :get, class: "d-flex" do %>
+        <%=  %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
@@ -24,8 +25,9 @@
 
   <div>
     <%= simple_form_for :search, url: ads_path, method: :get do |f| %>
-      <%= f.input :category, collection: Ad::CATEGORIES %>
+      <%= f.input :category, label: "Catégorie", collection: Ad::CATEGORIES %>
       <%= f.submit %>
+      <div><%= link_to "Annuler", ads_path %></div>
     <% end %>
   </div>
 
