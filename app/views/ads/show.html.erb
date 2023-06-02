@@ -1,8 +1,14 @@
-<div class="container-show">
+<div class="container">
+<div class="show_title"><%= @ad.name %></div>
   <div class ="row mx-0 justify-content-between w-100">
-    <div class="ps-5 col-6">
+    <div class="col-3 map px-0">
+      <div data-controller="map" class="w-100" data-map-marker-value="<%= @marker.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+        <div data-map-target="mapShowElement"  style="width: 100%; height: 700px;">
+        </div>
+      </div>
+    </div>
+    <div class="ps-3 col-9">
       <div class="card-body">
-        <div class="show_title mb-3"><%= @ad.name %></div>
         <div class="d-flex">
           <% @ad.photos.each do |photo| %>
             <%= cl_image_tag photo.key, class:"photo-ad" %>
@@ -16,18 +22,22 @@
           </div>
         </div>
       </div>
-      <div class="fs-4 my-4"><strong>Réservez maintenant !</strong></div>
-      <%= render 'shared/form' %>
       <br>
-      <div>
-      <%= link_to "Toutes les annonces", ads_path, class:"btn btn-outline-dark" %>
-      </div>
-    </div>
-    <div class="col-6 map px-0">
-      <div data-controller="map" class="mt-5 w-100" data-map-marker-value="<%= @marker.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-        <div data-map-target="mapShowElement"  style="width: 100%; height: 700px;">
+      <div data-controller="dynamic-booking-price" data-dynamic-booking-price-price-value="<%= @ad.price %>">
+        <%= simple_form_for [@ad, @booking], html: { data: { controller: 'datepicker' } } do |f| %>
+        <div class="d-flex">
         </div>
+        <div>
+          <%= f.input :start_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "startTime", dynamic_booking_price_target: 'startDateInput', action: 'change->dynamic-booking-price#updatePrice' }} %>
+          <%= f.input :end_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "endTime", dynamic_booking_price_target: 'endDateInput', action: 'change->dynamic-booking-price#updatePrice' }} %>
+        </div>
+        <div>
+          <%= f.submit 'Valider ma réservation', class: "btn btn-success" %>
+          <strong>Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @ad.price %></span> €</strong>
+        </div>
+        <% end %>
       </div>
     </div>
+
   </div>
 </div>

@@ -2,9 +2,12 @@
   height: 120px;
   display: flex;
   align-items: center;
-  color: #27374D;
-  border: 1px dotted #9DB2BF;
+  color: white;
+  background-color: #023e8a;
   font-size: 24px;
-  border-radius: 5px;
   padding: 30px;
   }
+
+  .dashboard-user-bar .avatar-user {
+  border: 1px solid white;
+}
