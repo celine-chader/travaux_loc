@@ -17,8 +17,8 @@
           <p><strong>Prix par jour : </strong><%= @ad.price %> €</p>
           <p><strong>Catégorie : </strong> <%= @ad.category %></p>
           <p><strong>Description : </strong> <%= @ad.description %></p>
-          <p><strong>Adresse: </strong><%= @ad.address %></p>
-          <p><strong>Posté par : </strong><%= @ad.user.first_name %> <%= @ad.user.last_name %> le <%= @ad.created_at.strftime("%d/%m/%Y") %></p>
+          <p><strong>Adresse : </strong><%= @ad.address %></p>
+          <p><strong>Posté par : </strong><%=cl_image_tag @ad.user.photo.key, class: "avatar"%> <%= @ad.user.first_name %> <%= @ad.user.last_name %> le <%= @ad.created_at.strftime("%d/%m/%Y") %></p>
           </div>
         </div>
       </div>
@@ -31,10 +31,11 @@
               <%= f.input :start_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "startTime", dynamic_booking_price_target: 'startDateInput', action: 'change->dynamic-booking-price#updatePrice' }} %>
               <%= f.input :end_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "endTime", dynamic_booking_price_target: 'endDateInput', action: 'change->dynamic-booking-price#updatePrice' }} %>
             </div>
+
           </div>
         </div>
           <div class="col-6 text-roboto">
-            <h5><strong>Le récapitulatif de votre commande</strong></h5>
+            <h5><strong>Récapitulatif de votre commande :</strong></h5>
             <hr>
             <p>Prix par jour : <%= @ad.price %> €</p>
             <strong>Prix total de votre réservation : <span data-dynamic-booking-price-target="priceHolder"><%= @ad.price %></span> €</strong>
