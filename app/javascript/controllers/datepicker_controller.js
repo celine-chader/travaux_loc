@@ -7,7 +7,7 @@ export default class extends Controller {
   static targets = [ "startTime", "endTime" ]
   connect() {
     flatpickr(this.startTimeTarget, {
-              enableTime: true,
+              enableTime: false,
               mode: "range",
               inline: true,
               // Provide an id for the plugin to work
