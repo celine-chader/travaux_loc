@@ -5,11 +5,11 @@
   <br>
   <div>
     <%= simple_form_for(@ad) do |f| %>
-      <div class="d-flex flex-row justify-content-between">
+      <div class="d-flex" style="gap: 40px">
         <%= f.input :name %>
         <%= f.input :category, collection: Ad::CATEGORIES %>
       </div>
-      <div class="d-flex flex-row justify-content-between">
+      <div class="d-flex flex-row justify-content-between ">
       <%= f.input :price %>
       <%= f.input :address %>
       </div>
