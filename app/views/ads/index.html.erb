@@ -14,7 +14,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container" style="min-height: 60vh">
 
   <div data-controller="map" class="mt-5 w-100" data-map-markers-value="<%= @markers.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     <button data-action="click->map#fire" class="btn btn-dark start-50 translate-middle position-fixed bottom-0" style="z-index:2;">Afficher la carte</button>
