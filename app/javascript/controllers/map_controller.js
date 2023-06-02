@@ -18,25 +18,12 @@ export default class extends Controller {
       style: "mapbox://styles/mapbox/streets-v11"
     })
 
-    this.markerValue((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html) // Add this
-      const Marker = document.createElement("div")
-      Marker.innerHTML = marker.marker_html
-      new mapboxgl.Marker(Marker)
+     const customMarker = document.createElement("div")
+     customMarker.innerHTML = this.markerValue.marker_html
+      new mapboxgl.Marker(customMarker)
         .setLngLat([ this.markerValue.lng, this.markerValue.lat ])
         .addTo(this.map)
 
-    });
-
-      // this.markerValue((marker) => {
-      //   const popup = new mapboxgl.Popup().setHTML(marker.info_window_html) // Add this
-      //   const customMarker = document.createElement("div")
-      //   customMarker.innerHTML = marker.marker_html
-      //   new mapboxgl.Marker(customMarker)
-      //     .setLngLat([ marker.lng, marker.lat ])
-      //     .setPopup(popup) // Add this
-      //     .addTo(this.map)
-      // });
     const bounds = new mapboxgl.LngLatBounds()
     bounds.extend([ this.markerValue.lng, this.markerValue.lat ])
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
