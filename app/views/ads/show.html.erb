@@ -23,24 +23,19 @@
         </div>
       </div>
       <br>
-      <div data-controller="dynamic-booking-price" data-dynamic-booking-price-price-value="<%= @ad.price %>" class="row">
+      <div data-controller="dynamic-booking-price" data-dynamic-booking-price-price-value="<%= @ad.price %>">
+        <%= simple_form_for [@ad, @booking], html: { data: { controller: 'datepicker' }, class: 'row' } do |f| %>
         <div class="col-6">
-          <div>
-            <%= simple_form_for [@ad, @booking], html: { data: { controller: 'datepicker' } } do |f| %>
-            <div>
-              <%= f.input :start_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "startTime", dynamic_booking_price_target: 'startDateInput', action: 'change->dynamic-booking-price#updatePrice' }} %>
-              <%= f.input :end_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "endTime", dynamic_booking_price_target: 'endDateInput', action: 'change->dynamic-booking-price#updatePrice' }} %>
-            </div>
-
-          </div>
+          <%= f.input :start_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "startTime", dynamic_booking_price_target: 'startDateInput', action: 'change->dynamic-booking-price#updatePrice' }} %>
+          <%= f.input :end_date, as: :string, label: false, input_html: { class:"d-none", data: { datepicker_target: "endTime", dynamic_booking_price_target: 'endDateInput', action: 'change->dynamic-booking-price#updatePrice' }} %>
         </div>
-          <div class="col-6 text-roboto">
-            <h5><strong>Récapitulatif de votre commande :</strong></h5>
-            <hr>
-            <p>Prix par jour : <%= @ad.price %> €</p>
-            <strong>Prix total de votre réservation : <span data-dynamic-booking-price-target="priceHolder"><%= @ad.price %></span> €</strong>
-            <br>
-            <div class="text-end" style="margin-top: 25px;"><%= f.submit 'Je valide !', class: "btn-blue" %></div>
+        <div class="col-6 text-roboto">
+          <h5><strong>Récapitulatif de votre commande :</strong></h5>
+          <hr>
+          <p>Prix par jour : <%= @ad.price %> €</p>
+          <strong>Prix total de votre réservation :
+          <span data-dynamic-booking-price-target="priceHolder"><%= @ad.price %></span> €</strong>
+          <div class="text-end" style="margin-top: 25px;"><%= f.submit 'Je valide !', class: "btn-blue" %></div>
         </div>
       </div>
       <% end %>
