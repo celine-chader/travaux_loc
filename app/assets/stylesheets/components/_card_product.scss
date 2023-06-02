@@ -9,6 +9,7 @@
   align-items: center;
 }
 
+
 .card-product img {
   height: 100%;
   width: 120px;
@@ -25,7 +26,7 @@
 
 .card-product p {
   font-family: "Roboto";
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
@@ -36,6 +37,13 @@
 .card-product .card-product-infos {
   padding: 16px;
   color: black;
+  width: 100%;
+}
+
+.card-product .card-product-reservation {
+  padding: 16px;
+  color: black;
+  width: 210px;
 }
 
 .btn-red {

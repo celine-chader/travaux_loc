@@ -26,7 +26,7 @@
       <% @ads.each do |ad| %>
         <div class="col-12 col-sm-6 col-md-4 my-3">
           <%= link_to ad_path(ad), style:"text-decoration: none" do %>
-            <div class="card-product">
+            <div class="card-product my-2">
               <% if ad.photos.first %>
                 <%= cl_image_tag ad.photos.first.key %>
               <% else %>
