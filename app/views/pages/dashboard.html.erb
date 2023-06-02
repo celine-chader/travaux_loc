@@ -4,7 +4,7 @@
         <%= cl_image_tag current_user.photo.key, class: "avatar-large avatar-user" %>
       </div>
       <div class="flex-grow-1">
-        <strong><div class="text-start text-wrap fs-5 mx-3"><%= current_user.first_name %>  <i class="fa-solid fa-circle-check" style="color: #1cb51c;"></i></div></strong>
+        <strong><div class="text-start text-wrap fs-5 mx-3"><%= current_user.first_name %>  <i class="fa-solid fa-circle-check" style="color: #63af90;"></i></div></strong>
         <div class="text-start text-wrap fs-6 ms-3 me-2"><i class="fa-regular fa-envelope me-2"></i><%= current_user.email %></div>
       </div>
       <div>
@@ -34,21 +34,21 @@
         <h4 class="text-center m-3 dashboard-style title-category">Annonces</h4>
           <div>
             <% @ads.each do |ad| %>
-              <div class="card-product my-2">
-                <% ad.photos.each do |photo| %>
-                  <%= cl_image_tag photo.key, crop: :fill %>
-                <% end %>
-                <%= link_to ad_path(ad), style:"text-decoration: none" do %>
-                <div class="card-product-infos">
-                  <h2 class="card-title"><%= ad.name %></h2>
-                    <p class="card-text"><strong>Réservations -</strong> <%= ad.bookings.count %></p>
-                    <div class="d-flex justify-content-between">
-                      <p><strong><%= ad.price %> €</strong></p>
-                      <p><span class="badge bg-dark"><%= ad.category %></span></p>
-                    </div>
-                <% end %>
+              <%= link_to ad_path(ad), style:"text-decoration: none" do %>
+                <div class="card-product my-2">
+                  <% ad.photos.each do |photo| %>
+                    <%= cl_image_tag photo.key, crop: :fill %>
+                  <% end %>
+                  <div class="card-product-infos">
+                    <h2 class="card-title"><%= ad.name %></h2>
+                      <p class="card-text"><strong>Réservations -</strong> <%= ad.bookings.count %></p>
+                      <div class="d-flex justify-content-between">
+                        <p><strong><%= ad.price %> €</strong></p>
+                        <p><span class="badge bg-dark"><%= ad.category %></span></p>
+                      </div>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
           </div>
       </div>
@@ -94,28 +94,28 @@
         <h4 class="text-center m-3 dashboard-style title-category">Réservations</h4>
           <div>
             <% @bookings.each do |booking| %>
+              <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
               <div class="card-product my-2">
                 <% booking.ad.photos.each do |photo| %>
                   <%= cl_image_tag photo.key, crop: :fill %>
                 <% end %>
-                <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
-                <div class="card-product-infos">
-                  <h2><%= booking.ad.name %></h2>
-                    <p><strong>Statut -</strong> <% if booking.status %>
-                      confirmé
-                      <% elsif booking.status == nil %>
-                      en attente
-                      <% else %>
-                      refusé
-                    <% end %>
-                    </p>
-                    <div class="d-flex justify-content-between">
-                      <p><strong><%= booking.ad.price %> €</strong></p>
-                      <p><span class="badge bg-dark"><%= booking.ad.category %></span></p>
-                    </div>
+                  <div class="card-product-infos">
+                    <h2><%= booking.ad.name %></h2>
+                      <p><strong>Statut -</strong> <% if booking.status %>
+                        confirmé
+                        <% elsif booking.status == nil %>
+                        en attente
+                        <% else %>
+                        refusé
+                      <% end %>
+                      </p>
+                      <div class="d-flex justify-content-between">
+                        <p><strong><%= booking.ad.price %> €</strong></p>
+                        <p><span class="badge bg-dark"><%= booking.ad.category %></span></p>
+                      </div>
+                  </div>
                 </div>
-                <% end %>
-              </div>
+              <% end %>
             <% end %>
           </div>
       </div>
