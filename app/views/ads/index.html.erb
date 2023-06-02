@@ -2,7 +2,6 @@
   <h1 class="text-center" >Du matériel à portée de main !</h1>
     <div>
       <%= form_with url: ads_path, method: :get, class: "d-flex" do |f| %>
-        <%= f.select :category, Ad::CATEGORIES %>
         <%= f.text_field :query,
           class: "form-control",
           placeholder: "Je recherche..."
