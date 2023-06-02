@@ -5,10 +5,14 @@
   <br>
   <div>
     <%= simple_form_for(@ad) do |f| %>
-      <%= f.input :name %>
-      <%= f.input :category, collection: Ad::CATEGORIES %>
+      <div class="d-flex flex-row justify-content-between">
+        <%= f.input :name %>
+        <%= f.input :category, collection: Ad::CATEGORIES %>
+      </div>
+      <div class="d-flex flex-row justify-content-between">
       <%= f.input :price %>
       <%= f.input :address %>
+      </div>
       <%= f.input :description %>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
       <%= f.input :availability, as: :date %>
