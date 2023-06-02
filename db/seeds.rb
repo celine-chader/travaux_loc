@@ -28,6 +28,13 @@ amal = User.create!(email: "amal.rabbani@gmail.com", password: "123456", first_n
 david = User.create!(email: "david.serrano@gmail.com", password: "123456", first_name: "David", last_name: "Serrano")
 baptiste = User.create!(email: "baptiste@lewagon.com", password: "123456", first_name: "Baptiste", last_name: "Lewagon")
 
+cdion.photo.attach(io: File.open('app/assets/images/cdion.jpg'), filename: "#{cdion.first_name}.jpg")
+celine.photo.attach(io: File.open('app/assets/images/celine.jpg'), filename: "#{celine.first_name}.jpg")
+boubou.photo.attach(io: File.open('app/assets/images/boubou.jpg'), filename: "#{boubou.first_name}.jpg")
+armelle.photo.attach(io: File.open('app/assets/images/armelle.jpg'), filename: "#{armelle.first_name}.jpg")
+david.photo.attach(io: File.open('app/assets/images/david.jpg'), filename: "#{david.first_name}.jpg")
+baptiste.photo.attach(io: File.open('app/assets/images/baptiste.jpg'), filename: "#{baptiste.first_name}.jpg")
+
 puts "seeding ads"
 file = URI.open('https://bjs-materiel-tp.fr/7849-thickbox_default/diable-multi-taches-altrad-avec-bavette-rabattable-et-roues-pleines-250-kg.jpg')
 ad_cdion1 = Ad.create!(
