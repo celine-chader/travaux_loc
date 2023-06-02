@@ -1,9 +1,9 @@
 <div class="banner d-flex flex-column" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= asset_path "homepage_banner.jpg" %>')">
   <h1 class="text-center" >Du matériel à portée de main !</h1>
     <div>
-      <%= form_with url: ads_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
+      <%= form_with url: ads_path, method: :get, class: "d-flex" do |f| %>
+        <%= f.select :category, Ad::CATEGORIES %>
+        <%= f.text_field :query,
           class: "form-control",
           placeholder: "Je recherche..."
         %>
@@ -36,7 +36,7 @@
                 <h2><%= ad.name %></h2>
                 <p><%= ad.description.truncate(50) %> <strong>voir plus.</strong></p>
                 <div class="d-flex justify-content-between">
-                  <p><strong><%= ad.price %> €</strong></p>
+                  <p><strong> <%= ad.price %> €</strong></p>
                   <p><span class="badge bg-secondary"><%= ad.category %></span></p>
                 </div>
               </div>
