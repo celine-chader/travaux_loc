@@ -1,22 +1,23 @@
 
 <div class="container">
-<div class="container-form">
-  <h5><i class="fa-solid fa-circle-plus"></i> Créer mon annonce</h5>
-  <br>
-  <div>
-    <%= simple_form_for(@ad) do |f| %>
-      <div class="d-flex justify-content-between" style="gap: 40px">
-      <div class="flex-fill"><%= f.input :name, label: 'Nom'%></div>
-       <div class="flex-fill"> <%= f.input :category, collection: Ad::CATEGORIES, label: 'Catégories' %> </div>
-      </div>
-      <div class="d-flex justify-content-between" style="gap: 40px">
-        <div class="flex-fill" > <%= f.input :price, label: 'Prix' %> </div>
-        <div class="flex-fill"> <%= f.input :address, label: 'Adresse' %> </div>
-      </div>
-      <%= f.input :description %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      <div class="text-center"> <%= f.button :submit, "C'est parti !", class:"btn-blue" %></div>
-    <% end %>
+  <div class="container-form">
+    <h5><i class="fa-solid fa-circle-plus"></i> Créer mon annonce</h5>
+    <br>
+    <div>
+      <%= simple_form_for(@ad) do |f| %>
+        <div class="d-flex justify-content-between" style="gap: 40px">
+          <div class="flex-fill"><%= f.input :name, label: 'Nom'%></div>
+          <div class="flex-fill"> <%= f.input :category, collection: Ad::CATEGORIES, label: 'Catégories' %> </div>
+        </div>
+        <div class="d-flex justify-content-between" style="gap: 40px">
+          <div class="flex-fill" > <%= f.input :price, label: 'Prix' %> </div>
+          <div class="flex-fill"> <%= f.input :address, label: 'Adresse' %> </div>
+        </div>
+        <%= f.input :description %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <div class="text-center"> <%= f.button :submit, "C'est parti !", class:"btn-blue" %></div>
+      <% end %>
+    </div>
+    <br>
   </div>
-  <br>
 </div>
