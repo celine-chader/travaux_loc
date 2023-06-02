@@ -18,4 +18,8 @@ class Ad < ApplicationRecord
   using: {
     tsearch: { prefix: true } # <-- now `superman batm` will return something!
   }
+
+  def requested_bookings
+    bookin
+  end
 end
