@@ -28,6 +28,13 @@ amal = User.create!(email: "amal.rabbani@gmail.com", password: "123456", first_n
 david = User.create!(email: "david.serrano@gmail.com", password: "123456", first_name: "David", last_name: "Serrano")
 baptiste = User.create!(email: "baptiste@lewagon.com", password: "123456", first_name: "Baptiste", last_name: "Lewagon")
 
+cdion.photo.attach(io: File.open('app/assets/images/cdion.jpg'), filename: "#{cdion.first_name}.jpg")
+celine.photo.attach(io: File.open('app/assets/images/celine.jpg'), filename: "#{celine.first_name}.jpg")
+boubou.photo.attach(io: File.open('app/assets/images/boubou.jpg'), filename: "#{boubou.first_name}.jpg")
+armelle.photo.attach(io: File.open('app/assets/images/armelle.jpg'), filename: "#{armelle.first_name}.jpg")
+david.photo.attach(io: File.open('app/assets/images/david.jpg'), filename: "#{david.first_name}.jpg")
+baptiste.photo.attach(io: File.open('app/assets/images/baptiste.jpg'), filename: "#{baptiste.first_name}.jpg")
+
 puts "seeding ads"
 file = URI.open('https://bjs-materiel-tp.fr/7849-thickbox_default/diable-multi-taches-altrad-avec-bavette-rabattable-et-roues-pleines-250-kg.jpg')
 ad_cdion1 = Ad.create!(
@@ -46,7 +53,7 @@ ad_cdion2 = Ad.create!(
   category: "Bétonnière",
   user: cdion,
   description: "Belle bétonnière jaune presque neuve avec volant démultiplié pour les travaux de construction. Disponible tout de suite",
-  address: "12 rue de Rivoli, Paris",
+  address: "30 rue de Longchamp, Paris",
   price: 110
 )
 ad_cdion2.photos.attach(io: file, filename: "#{ad_cdion2.name}.png", content_type: "image/png")
@@ -125,7 +132,7 @@ ad_baptiste = Ad.create!(
   category: "Lève plaque",
   user: baptiste,
   description: "Cet appareil pour soulever les panneaux ou plaque de plâtre est vite monté et sert d'aide de montage dans la construction de cloisons intérieures ou cloisons sèches. Il soulève tout.",
-  address: "46 avenue Dausmenil, Paris",
+  address: "62 rue Alexandre Dumas, Paris",
   price: 19
 )
 ad_baptiste.photos.attach(io: file, filename: "#{ad_baptiste.name}.png", content_type: "image/png")

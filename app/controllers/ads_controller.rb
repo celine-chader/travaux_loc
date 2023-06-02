@@ -3,9 +3,12 @@ class AdsController < ApplicationController
   before_action :set_ad, only: [:show, :destroy, :edit, :update]
 
   def index
+
     if params[:query].present?
       sql_query = "name ILIKE :query OR category ILIKE :query"
       @ads = Ad.where(sql_query, query: "%#{params[:query]}%")
+    # elsif params[:category].present?
+    #   @ads = Ad.where(category: params[:category])
     else
       @ads = Ad.all
     end
