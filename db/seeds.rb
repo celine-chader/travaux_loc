@@ -139,8 +139,8 @@ ad_baptiste.photos.attach(io: file, filename: "#{ad_baptiste.name}.png", content
 
 # puts "seeding bookings"
 # booking1 = Booking.create!(
-#   ad_id: ad_celine,
-#   user_id: cdion,
+#   ad: ad_celine,
+#   user: cdion,
 #   start_date: "2023-06-12",
 #   end_date: "2023-06-16"
 # )
