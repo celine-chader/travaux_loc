@@ -6,15 +6,12 @@
   <div>
     <%= simple_form_for(@ad) do |f| %>
       <div class="d-flex justify-content-between" style="gap: 40px">
-      <div class="flex-fill">
-        <label for="name">Nom</label>
-        <%= f.input :name %>
-      </div>
-       <div class="flex-fill"> <%= f.input :category, collection: Ad::CATEGORIES %> </div>
+      <div class="flex-fill"><%= f.input :name, label: 'Nom'%></div>
+       <div class="flex-fill"> <%= f.input :category, collection: Ad::CATEGORIES, label: 'Catégories' %> </div>
       </div>
       <div class="d-flex justify-content-between" style="gap: 40px">
-        <div class="flex-fill" > <%= f.input :price %> </div>
-        <div class="flex-fill"> <%= f.input :address %> </div>
+        <div class="flex-fill" > <%= f.input :price, label: 'Prix' %> </div>
+        <div class="flex-fill"> <%= f.input :address, label: 'Adresse' %> </div>
       </div>
       <%= f.input :description %>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
