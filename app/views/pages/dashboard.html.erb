@@ -27,11 +27,10 @@
 
 <div class="container">
   <div class="container-fluid justify-content-center ">
-
-    <div class="d-flex justify-content-center">
-
+    <br>
+    <div class="d-flex justify-content-center mt-10">
       <div class="col col-4 m-2 dashboard-style">
-        <h4 class="text-center m-3 dashboard-style title-category">Annonces</h4>
+        <h4 class="text-center m-3 dashboard-style title-category">ANNONCES</h4>
           <div>
             <% @ads.each do |ad| %>
               <%= link_to ad_path(ad), style:"text-decoration: none" do %>
@@ -54,7 +53,7 @@
       </div>
 
       <div class="col-4 m-2 dashboard-style">
-        <h4 class="text-center m-3 dashboard-style title-category" >Demandes de réservations</h4>
+        <h4 class="text-center m-3 dashboard-style title-category" >DEMANDES DE RÉSERVATIONS</h4>
           <div>
             <% @ads.each do |ad| %>
               <% ad.bookings.each do |booking| %>
@@ -91,7 +90,7 @@
       </div>
 
       <div class="col-4 m-2 dashboard-style">
-        <h4 class="text-center m-3 dashboard-style title-category">Réservations</h4>
+        <h4 class="text-center m-3 dashboard-style title-category fa-light fa-calendar-lines"> RÉSERVATIONS</h4>
           <div>
             <% @bookings.each do |booking| %>
               <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
