@@ -15,7 +15,8 @@
   // padding: 3px;
   // padding-left: 10px;
   // padding-right: 10px;
-  border-color: red;
+  background-color: white;
+  border: 1px solid red;
   color: red;
   border-radius: 15px;
   font-size: 13px;
@@ -24,6 +25,7 @@
 .btn-green {
   width: 80px;
   height: 30px;
+  border: none;
   // padding-left: 10px;
   // padding-right: 10px;
   background-color: #63af90;

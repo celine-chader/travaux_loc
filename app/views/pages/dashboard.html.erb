@@ -30,7 +30,7 @@
     <br>
     <div class="d-flex justify-content-center mt-10">
       <div class="col col-4 m-2 dashboard-style">
-        <h4 class="text-center m-3 dashboard-style title-category">ANNONCES</h4>
+        <h4 class="text-center m-3 dashboard-style title-category"><i class="fas fa-scroll"> </i> ANNONCES</h4>
           <div>
             <% @ads.each do |ad| %>
               <%= link_to ad_path(ad), style:"text-decoration: none" do %>
@@ -53,44 +53,43 @@
       </div>
 
       <div class="col-4 m-2 dashboard-style">
-        <h4 class="text-center m-3 dashboard-style title-category" >DEMANDES DE RÉSERVATIONS</h4>
+        <h4 class="text-center m-3 dashboard-style title-category" ><i class="fa-solid fa-handshake"> </i> DEMANDES DE RÉSERVATIONS</h4>
           <div>
-            <% @ads.each do |ad| %>
-              <% ad.bookings.each do |booking| %>
-                <% if booking.status != false %>
-                  <div class="card-product my-2" >
-                    <%= cl_image_tag booking.ad.photos.first.key, crop: :fill %>
-                    <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
-                      <div class="card-product-reservation">
-                        <h2 class="card-title"><%= booking.ad.name %></h2>
-                          <p class="card-text"><strong>Statut -</strong>
-                            <% if booking.status %>
-                              <%= "confirmé" %>
-                            <% elsif booking.status == nil %>
-                              <%= "en attente" %>
-                            <% end %></p>
-                          <p class="card-text"><strong>Catégorie -</strong> <%= booking.ad.category %></p>
-                      </div>
-                    <% end %>
-                    <div class="card-text-end">
-                      <% if booking.status %>
-                        <% accept_path(booking) %>
-                      <% elsif booking.status == nil %>
-                        <%= button_to "Accepter", accept_path(booking), :class => "btn btn-green btn-sm my-1" %>
-                        <div class="text-center"><%= button_to "Refuser", decline_path(booking), :class => "btn btn-tiny-red my-1" %></div>
-                      <% else %>
-                        <% decline_path(booking) %>
-                      <% end %>
+            <% @sort_bookings.each do |booking| %>
+              <% if booking.status != false %>
+                <div class="card-product my-2" >
+                  <%= cl_image_tag booking.ad.photos.first.key, crop: :fill %>
+                  <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
+                    <div class="card-product-reservation">
+                      <h2 class="card-title"><%= booking.ad.name %></h2>
+                        <p class="card-text"><strong>Statut -</strong>
+                          <% if booking.status %>
+                            <%= "confirmé" %>
+                          <% elsif booking.status == nil %>
+                            <%= "en attente" %>
+                          <% end %></p>
+                        <p class="card-text"><strong>Catégorie -</strong> <%= booking.ad.category %></p>
                     </div>
+                  <% end %>
+                  <div class="card-text-end">
+                    <% if booking.status %>
+                      <% accept_path(booking) %>
+                      <%= button_to "Accepté !", accept_path(booking), :class => "btn-green btn-sm my-1" %>
+                    <% elsif booking.status == nil %>
+                      <%= button_to "Accepter", accept_path(booking), :class => "btn-green btn-sm my-1" %>
+                      <div class="text-center"><%= button_to "Refuser", decline_path(booking), :class => "btn-tiny-red my-1" %></div>
+                    <% else %>
+                      <% decline_path(booking) %>
+                    <% end %>
                   </div>
-                <% end %>
+                </div>
               <% end %>
             <% end %>
           </div>
       </div>
 
       <div class="col-4 m-2 dashboard-style">
-        <h4 class="text-center m-3 dashboard-style title-category fa-light fa-calendar-lines"> RÉSERVATIONS</h4>
+        <h4 class="text-center m-3 dashboard-style title-category "><i class="fa-solid fa-calendar-day"> </i> RÉSERVATIONS</h4>
           <div>
             <% @bookings.each do |booking| %>
               <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
