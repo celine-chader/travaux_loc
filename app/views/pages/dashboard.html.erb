@@ -44,7 +44,7 @@
                       <p class="card-text"><strong>Réservations -</strong> <%= ad.bookings.count %></p>
                       <div class="d-flex justify-content-between">
                         <p><strong><%= ad.price %> €</strong></p>
-                        <p><span class="badge bg-dark"><%= ad.category %></span></p>
+                        <p><span class="badge bg-secondary"><%= ad.category %></span></p>
                       </div>
                   </div>
                 </div>
@@ -62,7 +62,7 @@
                   <div class="card-product my-2" >
                     <%= cl_image_tag booking.ad.photos.first.key, crop: :fill %>
                     <%= link_to ad_path(booking.ad), style:"text-decoration: none" do %>
-                      <div class="card-product-infos">
+                      <div class="card-product-reservation">
                         <h2 class="card-title"><%= booking.ad.name %></h2>
                           <p class="card-text"><strong>Statut -</strong>
                             <% if booking.status %>
@@ -111,7 +111,7 @@
                       </p>
                       <div class="d-flex justify-content-between">
                         <p><strong><%= booking.ad.price %> €</strong></p>
-                        <p><span class="badge bg-dark"><%= booking.ad.category %></span></p>
+                        <p><span class="badge bg-secondary"><%= booking.ad.category %></span></p>
                       </div>
                   </div>
                 </div>

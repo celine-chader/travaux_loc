@@ -9,9 +9,11 @@
 }
 
 .btn-tiny-red {
-  padding: 3px;
-  padding-left: 10px;
-  padding-right: 10px;
+  width: 80px;
+  height: 30px;
+  // padding: 3px;
+  // padding-left: 10px;
+  // padding-right: 10px;
   border-color: red;
   color: red;
   border-radius: 15px;
@@ -19,8 +21,10 @@
 }
 
 .btn-green {
-  padding-left: 10px;
-  padding-right: 10px;
+  width: 80px;
+  height: 30px;
+  // padding-left: 10px;
+  // padding-right: 10px;
   background-color: #63af90;
   color:white;
   border-radius: 15px;
