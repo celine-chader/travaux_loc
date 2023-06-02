@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :bookings
   has_many :ads
+  has_many :bookings
   has_one_attached :photo
 
   validates :first_name, presence: true
@@ -9,4 +9,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def requested
+    ads.map(&:bookings).flatten.sort
+  end
 end
