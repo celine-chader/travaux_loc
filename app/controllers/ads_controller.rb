@@ -28,7 +28,8 @@ class AdsController < ApplicationController
     @booking = Booking.new
     @marker = {
       lat: @ad.latitude,
-      lng: @ad.longitude
+      lng: @ad.longitude,
+      marker_html: render_to_string(partial: "marker")
     }
   end
 
