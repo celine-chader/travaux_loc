@@ -21,6 +21,7 @@ export default class extends Controller {
      const customMarker = document.createElement("div")
      customMarker.innerHTML = this.markerValue.marker_html
       new mapboxgl.Marker(customMarker)
+
         .setLngLat([ this.markerValue.lng, this.markerValue.lat ])
         .addTo(this.map)
 
