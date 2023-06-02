@@ -18,7 +18,7 @@
           <p><strong>Catégorie : </strong> <%= @ad.category %></p>
           <p><strong>Description : </strong> <%= @ad.description %></p>
           <p><strong>Adresse: </strong><%= @ad.address %></p>
-          <p><strong>Posté par : </strong><%= @ad.user.first_name %> <%= @ad.user.last_name %> le <%= @ad.created_at.strftime("%m/%d/%Y") %></p>
+          <p><strong>Posté par : </strong><%= @ad.user.first_name %> <%= @ad.user.last_name %> le <%= @ad.created_at.strftime("%d/%m/%Y") %></p>
           </div>
         </div>
       </div>
