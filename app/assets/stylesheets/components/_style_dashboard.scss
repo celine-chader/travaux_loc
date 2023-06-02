@@ -3,7 +3,34 @@
 }
 
 .title-category {
-  font-size: 20px;
+  margin-top: 30px;
+  font-size: 18px;
   font-weight: 500;
-  color: #023e8a;
+  color: #1E88E5;
+}
+
+.btn-tiny-red {
+  width: 80px;
+  height: 30px;
+  // padding: 3px;
+  // padding-left: 10px;
+  // padding-right: 10px;
+  background-color: white;
+  border: 1px solid red;
+  color: red;
+  border-radius: 15px;
+  font-size: 13px;
+}
+
+.btn-green {
+  width: 80px;
+  height: 30px;
+  border: none;
+  // padding-left: 10px;
+  // padding-right: 10px;
+  background-color: #63af90;
+  color:white;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: 500;
 }
